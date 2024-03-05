@@ -5,18 +5,14 @@ import model.Admin;
 
 import java.util.List;
 
-interface AdminDAO {
-    /**
-     * 对管理员进行操作
-     */
-    List<Admin> getAllAdmins();
-    List<String> getAdmin_ID();
-}
 public class AdminDAOImpl implements AdminDAO{
+    private List<Admin> admins;
+    public AdminDAOImpl() {
 
+    }
     @Override
     public List<Admin> getAllAdmins() {
-        return null;
+        return admins;
     }
 
     @Override

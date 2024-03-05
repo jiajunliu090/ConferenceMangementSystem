@@ -11,7 +11,7 @@ import java.util.List;
  */
 public interface UserService {
     // 注册
-    boolean registerUser(User user);
+    boolean registerUser(String user_ID, String u_password, String name);
     // 注销
     boolean deleteUser(String user_ID, String u_password);
     // 查看自己需要参加的会议

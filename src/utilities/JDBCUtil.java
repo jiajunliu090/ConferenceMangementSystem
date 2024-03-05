@@ -54,7 +54,7 @@ public class JDBCUtil {
             e.printStackTrace();
         }
     }
-    public void closeConnection(Statement statement, Connection connection) {
+    public static void closeConnection(Statement statement, Connection connection) {
         closeConnection(null, statement, connection);
     }
 
