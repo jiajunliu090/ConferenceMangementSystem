@@ -1,2 +1,5 @@
-package service.impl;public class UserServiceImpl {
+package service.impl;
+
+public class UserServiceImpl {
+
 }
