@@ -1,10 +1,11 @@
-package dao;
+package dao.impl;
 
+import dao.RoomDAO;
 import model.ConferenceRoom;
 
 import java.util.List;
 
-public class RoomDAOImpl implements RoomDAO{
+public class RoomDAOImpl implements RoomDAO {
     List<ConferenceRoom> conferenceRooms;
     public RoomDAOImpl() {
 

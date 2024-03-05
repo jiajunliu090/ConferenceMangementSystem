@@ -1,7 +1,10 @@
 package utilities;
 
 import dao.*;
-import model.User;
+import dao.impl.AdminDAOImpl;
+import dao.impl.ConferenceDAOImpl;
+import dao.impl.RoomDAOImpl;
+import dao.impl.UserDAOImpl;
 
 public class DependencyInjectionConfig {
     private AdminDAO adminDAO = new AdminDAOImpl();

@@ -31,4 +31,5 @@ public interface UserDAO {
 
     // 用户是否存在
     boolean isExist(String user_ID);
+    String getU_password(String user_ID);
 }

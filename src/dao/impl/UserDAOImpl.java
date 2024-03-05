@@ -1,5 +1,6 @@
-package dao;
+package dao.impl;
 
+import dao.UserDAO;
 import model.Conference;
 import model.User;
 import utilities.JDBCUtil;
@@ -11,9 +12,7 @@ import java.util.List;
 
 public class UserDAOImpl implements UserDAO {
     List<User> users;
-    public UserDAOImpl() {
 
-    }
     @Override
     public User getUserById(int userId) {
         return null;
@@ -88,11 +87,37 @@ public class UserDAOImpl implements UserDAO {
         }
         return false;
     }
+    public String getU_password(String user_ID) {
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+        String sql = "SELECT * FROM user_info WHERE user_ID = ?";
+        String res = null;
+        try {
+            connection = JDBCUtil.getConnection();
+            preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, user_ID);
+            resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                if (resultSet.getString("user_ID").equals(user_ID)) {
+                    res = resultSet.getString("u_password");
+                }
+            }
+            return res;
+        }catch (Exception e) {
+            e.printStackTrace();
+        }finally {
+            JDBCUtil.closeConnection(resultSet, preparedStatement, connection);
+        }
+        return res;
+    }
 
     public static void main(String[] args) {
         UserDAO userDAO = new UserDAOImpl();
         System.out.println(userDAO.isExist("10000000"));
-        User user = new User("test0001", "tpass1", "test1");
-        userDAO.addUser(user);
+        //User user = new User("test0001", "tpass1", "test1");
+        //userDAO.addUser(user);
+        System.out.println(userDAO.getU_password("test0001"));
+
     }
 }

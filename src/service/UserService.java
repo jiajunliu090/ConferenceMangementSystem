@@ -12,8 +12,11 @@ import java.util.List;
 public interface UserService {
     // 注册
     boolean registerUser(String user_ID, String u_password, String name);
+    // 登录
+    boolean loginUser(String user_ID, String u_password);
+    String getLoginUser_ID();
     // 注销
-    boolean deleteUser(String user_ID, String u_password);
+    boolean deleteUser(String user_ID, String u_password, String ensure);
     // 查看自己需要参加的会议
     List<Conference> meetingsToAttend();
     // 创建会议

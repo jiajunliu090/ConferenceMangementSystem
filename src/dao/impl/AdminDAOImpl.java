@@ -1,11 +1,12 @@
-package dao;
+package dao.impl;
 
 
+import dao.AdminDAO;
 import model.Admin;
 
 import java.util.List;
 
-public class AdminDAOImpl implements AdminDAO{
+public class AdminDAOImpl implements AdminDAO {
     private List<Admin> admins;
     public AdminDAOImpl() {
 

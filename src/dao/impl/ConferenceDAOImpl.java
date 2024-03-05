@@ -1,11 +1,12 @@
-package dao;
+package dao.impl;
 
+import dao.ConferenceDAO;
 import model.Conference;
 import model.ConferenceRoom;
 
 import java.util.List;
 
-public class ConferenceDAOImpl implements ConferenceDAO{
+public class ConferenceDAOImpl implements ConferenceDAO {
     private List<Conference> conferences;
     public ConferenceDAOImpl() {
 
