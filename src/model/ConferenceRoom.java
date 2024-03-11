@@ -48,4 +48,8 @@ public class ConferenceRoom {
     public void setConferenceList(List<Conference> conferenceList) {
         this.conferenceList = conferenceList;
     }
+    @Override
+    public String toString() {
+        return "会议室ID--" + this.room_ID;
+    }
 }

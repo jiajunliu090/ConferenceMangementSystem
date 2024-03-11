@@ -13,5 +13,7 @@ public interface RoomDAO {
     boolean addRoom(String room_ID);
     // 删除会议室
     boolean deleteRoom(String room_ID);
+    // 搜索空闲的房间
+    List<String> getOpenRoom();
 
 }

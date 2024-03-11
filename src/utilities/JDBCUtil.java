@@ -59,25 +59,25 @@ public class JDBCUtil {
     }
 
     public static void main(String[] args) {
-        //System.out.println(JDBCUtil.driverClass);
-        //try {
-        //    Connection connection = JDBCUtil.getConnection();
-        //    Statement statement = connection.createStatement();
-        //    ResultSet resultSet = statement.executeQuery("SELECT * FROM user_info");
-        //    // 迭代处理查询结果
-        //    while (resultSet.next()) {
-        //        // 通过列名或索引获取每一列的值
-        //        // 这里假设第一列的列名为 "column_name"，你需要将其替换为实际的列名
-        //        String columnValue = resultSet.getString("user_ID");
-        //        // 处理获取到的列值
-        //        System.out.println("Column Value: " + columnValue);
-        //    }
-        //    resultSet.close();
-        //    statement.close();
-        //    connection.close();
-        //
-        //}catch (Exception e) {
-        //    e.printStackTrace();
-        //}
+        System.out.println(JDBCUtil.driverClass);
+        try {
+            Connection connection = JDBCUtil.getConnection();
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery("SELECT * FROM conference_management.conference_info");
+            // 迭代处理查询结果
+            while (resultSet.next()) {
+                // 通过列名或索引获取每一列的值
+                // 这里假设第一列的列名为 "column_name"，你需要将其替换为实际的列名
+                String columnValue = resultSet.getString("meetingTime");
+                // 处理获取到的列值
+                System.out.println("Column Value: " + columnValue);
+            }
+            resultSet.close();
+            statement.close();
+            connection.close();
+
+        }catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

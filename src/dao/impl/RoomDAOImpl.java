@@ -29,4 +29,9 @@ public class RoomDAOImpl implements RoomDAO {
     public boolean deleteRoom(String room_ID) {
         return false;
     }
+
+    @Override
+    public List<String> getOpenRoom() {
+        return null;
+    }
 }

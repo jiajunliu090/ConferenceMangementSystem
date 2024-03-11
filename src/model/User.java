@@ -38,10 +38,6 @@ public class User {
         return u_password;
     }
 
-    public void setU_password(String u_password) {
-        this.u_password = u_password;
-    }
-
     public String getName() {
         return name;
     }
@@ -72,5 +68,13 @@ public class User {
 
     public void setGender(String gender) {
         this.gender = gender;
+    }
+
+    @Override
+    public String toString() {
+        StringBuffer sb = new StringBuffer();
+        sb.append("用户ID: ").append(this.user_ID).append(", 姓名: ").append(this.name)
+                .append(", 职位: ").append(this.position).append("\n");
+        return sb.toString();
     }
 }

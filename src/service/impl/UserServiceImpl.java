@@ -4,46 +4,33 @@ import dao.*;
 import model.Conference;
 import model.User;
 import service.UserService;
-import utilities.DependencyInjectionConfig;
+import utilities.ConfigHelper;
 
 import java.time.LocalDateTime;
 import java.util.List;
 
 public class UserServiceImpl implements UserService {
-    private UserDAO userDAO;
-    private AdminDAO adminDAO;
-    private ConferenceDAO conferenceDAO;
-    private RoomDAO roomDAO;
+
     private String loginUser_ID;
 
-
-    public UserServiceImpl(DependencyInjectionConfig dic) {
-        userDAO = dic.getUserDAO();
-        adminDAO = dic.getAdminDAO();
-        conferenceDAO = dic.getConferenceDAO();
-        roomDAO = dic.getRoomDAO();
+    public UserServiceImpl() {
     }
     @Override
     public boolean registerUser(String user_ID, String u_password, String name) {
         // 先检查ID是否重复
-        if (userDAO.isExist(user_ID)) {
+        if (ConfigHelper.getInstance().getUserDAO().isExist(user_ID)) {
             return false;
         }else {
-            userDAO.addUser(new User(user_ID, u_password, name));
+            ConfigHelper.getInstance().getUserDAO().addUser(new User(user_ID, u_password, name));
             return true;
         }
     }
 
     @Override
     public boolean loginUser(String user_ID, String u_password) {
-        if (userDAO.isExist(user_ID)) {
-            if (userDAO.getU_password(user_ID).equals(u_password)) {
-                this.loginUser_ID = user_ID;
-                return true;
-            }
-            System.out.println("密码错误");
-        }else {
-            System.out.println("用户不存在");
+        if (ConfigHelper.getInstance().getUserDAO().isCorrect(user_ID, u_password)) {
+            this.loginUser_ID = user_ID;
+            return true;
         }
         return false;
     }
@@ -56,22 +43,28 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public boolean deleteUser(String user_ID, String u_password, String ensure) {
-
+        String contrast = "我同意注销" + user_ID; // 写保证
+        if (ConfigHelper.getInstance().getUserDAO().isCorrect(user_ID, u_password) && contrast.equals(ensure)) { // 如果存在并且用户名和密码对的上的话
+            return ConfigHelper.getInstance().getUserDAO().deleteUser(user_ID); // 删除
+        }
         return false;
     }
 
     @Override
-    public List<Conference> meetingsToAttend() {
-        return null;
+    public List<Conference> meetingsToAttend() { // 查找需要参加的会议
+        return ConfigHelper.getInstance().getUserConferenceDAO().getConferencesByUser_ID(loginUser_ID);
     }
 
     @Override
-    public boolean createConference(String meeting_ID, String room_ID, List<User> participators, LocalDateTime meetingTime) {
-        return false;
+    public boolean createConference(String meeting_ID, String room_ID, List<User> participators, LocalDateTime meetingTime, String theme) {
+        Conference conference = new Conference(meeting_ID, loginUser_ID, participators, meetingTime, theme);
+        // 创建会议
+        return ConfigHelper.getInstance().getConferenceDAO().addConference(conference, room_ID);
     }
 
     @Override
-    public boolean updateConference() {
+    public boolean updateConference() { // 修改会议
+
         return false;
     }
 
@@ -87,6 +80,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public boolean updateUser(User userTouUpdate) {
+
         return false;
     }
 
@@ -96,9 +90,11 @@ public class UserServiceImpl implements UserService {
     }
 
     public static void main(String[] args) {
-        UserService userService = new UserServiceImpl(new DependencyInjectionConfig());
+        UserService userService = new UserServiceImpl();
+        userService.registerUser("test0001", "tpass1", "test1");
         userService.loginUser("test0001", "tpass1");
         String loginUser_ID = userService.getLoginUser_ID();
         System.out.println("Login user ID: " + loginUser_ID);
+        //System.out.println(userService.deleteUser("test0001", "tpass1", "我同意注销test0001"));
     }
 }

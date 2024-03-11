@@ -13,23 +13,19 @@ public interface UserDAO {
      * 对用户操作
      */
     // 查用户
-    User getUserById(int userId);
-
+    User getUserById(String userId);
     List<User> getAllUsers();
-
-    // 根据会议查用户
-    List<User> getUsersByConference(Conference conference);
-
     // 添加用户
     boolean addUser(User curToAdd);
-
     // 删除用户
     boolean deleteUser(String user_ID);
-
     // 更新用户信息
     boolean updateUser(String user_id, User newUser);
-
+    // 根据用户ID查询数据库创建一个用户实例
+    User newUserByDB_User_ID(String user_ID);
     // 用户是否存在
     boolean isExist(String user_ID);
     String getU_password(String user_ID);
+    // 用户名与密码符合
+    boolean isCorrect(String user_ID, String password);
 }

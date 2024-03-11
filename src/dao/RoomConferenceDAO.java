@@ -1,0 +1,15 @@
+package dao;
+
+import model.Conference;
+import model.ConferenceRoom;
+
+import java.time.LocalDateTime;
+import java.util.List;
+
+public interface RoomConferenceDAO {
+    // 根据会议室查会议:得到会议所有信息
+    List<Conference> getConferenceByRoomID(ConferenceRoom conferenceRoom);
+    // 将会议加入到会议室中
+    boolean addMeetingToRoom(String meeting_ID, String room_ID, LocalDateTime meetingTime);
+
+}

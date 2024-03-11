@@ -20,7 +20,7 @@ public interface UserService {
     // 查看自己需要参加的会议
     List<Conference> meetingsToAttend();
     // 创建会议
-    boolean createConference(String meeting_ID, String room_ID , List<User> participators, LocalDateTime meetingTime);
+    boolean createConference(String meeting_ID, String room_ID , List<User> participators, LocalDateTime meetingTime, String theme);
     // 修改会议
     boolean updateConference(); // 先进行验证
     // 删除会议
