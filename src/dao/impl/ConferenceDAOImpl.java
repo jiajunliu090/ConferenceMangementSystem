@@ -19,9 +19,8 @@ import java.util.Map;
 //✔️
 
 public class ConferenceDAOImpl implements ConferenceDAO {
-    private List<Conference> conferences;
 
-    public ConferenceDAOImpl() {
+    public ConferenceDAOImpl() { // 拿到所有会议信息
 
     }
 
@@ -72,25 +71,105 @@ public class ConferenceDAOImpl implements ConferenceDAO {
         return false;
     }
 
+    //@Override
+    //public Map<LocalDateTime, List<User>> getMeetingInfo(String meeting_ID) {
+    //    return null;
+    //}
+
     @Override
-    public Map<LocalDateTime, List<User>> getMeetingInfo(String meeting_ID) {
-        return null;
+    public List<String> getMeeting_ID(String user_ID) { // 根据参会人查找会议
+        List<String> res = new ArrayList<>();
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+        String sql = "SELECT meeting_ID FROM conference_management.user_conference WHERE user_ID = ?";
+        try {
+            connection = JDBCUtil.getConnection();
+            preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, user_ID);
+            resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                res.add(resultSet.getString("meeting_ID"));
+            }
+            return res;
+        }catch (Exception e) {
+            e.printStackTrace();
+        }finally {
+            JDBCUtil.closeConnection(resultSet, preparedStatement, connection);
+        }
+        return res;
     }
 
     @Override
-    public List<Conference> getAllConferences() {
-        return conferences;
+    public Conference newConferenceByMeeting_ID(String meeting_ID) {
+        return ConfigHelper.getInstance().getUserConferenceDAO().getConferenceByMeeting_ID(meeting_ID);
     }
 
     @Override
-    public List<String> getMeeting_ID(String time, String user_ID) {
-        return null;
+    public boolean updateConference(String meeting_ID, String user_ID, String theme, LocalDateTime meetingTime) {
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+        String sql = "SELECT * FROM conference_management.conference_info WHERE creator_ID = ? AND meeting_ID = ?";
+        try {
+            connection = JDBCUtil.getConnection();
+            preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, user_ID);
+            preparedStatement.setString(2, meeting_ID);
+            resultSet = preparedStatement.executeQuery();
+            if (resultSet != null) {
+                while (resultSet.next()) {
+                    updateHelper(meeting_ID, theme, meetingTime);
+                    return true;
+                }
+            }else return false;
+        }catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
     }
 
     @Override
-    public List<Conference> getConferenceByMeeting_ID(String meeting_ID) {
+    public boolean isCreator(String meeting_ID, String user_ID) {
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+        String sql = "SELECT meeting_ID FROM conference_management.conference_info";
+        try {
+            connection = JDBCUtil.getConnection();
+            preparedStatement = connection.prepareStatement(sql);
+            resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                if (resultSet.getString("creator_ID").equals(user_ID)) {
+                    return true;
+                }
+            }
+            return false;
+        }catch (Exception e) {
+            e.printStackTrace();
+        }finally {
+            JDBCUtil.closeConnection(resultSet, preparedStatement, connection);
+        }
+        return false;
+    }
 
-        return null;
+    private void updateHelper(String meeting_ID, String theme, LocalDateTime meetingTime) {
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        String sql = "UPDATE conference_management.conference_info SET theme = ? AND meetingTime = ? WHERE meeting_ID = ?";
+        try {
+            connection = JDBCUtil.getConnection();
+            preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, theme);
+            preparedStatement.setString(2, DateTimeUtils.toDbDateTime(meetingTime));
+            preparedStatement.setString(3, meeting_ID);
+            int affectRow = preparedStatement.executeUpdate();
+            System.out.println("更新会议：影响的行数：" + affectRow);
+        }catch (Exception e) {
+            e.printStackTrace();
+        }finally {
+            JDBCUtil.closeConnection(preparedStatement, connection);
+        }
     }
 
     public static void main(String[] args) {

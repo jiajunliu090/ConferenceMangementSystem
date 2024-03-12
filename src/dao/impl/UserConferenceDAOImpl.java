@@ -138,7 +138,7 @@ public class UserConferenceDAOImpl implements UserConferenceDAO {
     }
 
     @Override
-    public boolean signInMeetingInDB(String user_ID, String meeting_ID) {
+    public boolean signInMeetingInDB(String user_ID, String meeting_ID) {  //✔️
         LocalDateTime signInTime = LocalDateTime.now();
         Connection connection = null;
         PreparedStatement preparedStatement = null;
@@ -164,10 +164,10 @@ public class UserConferenceDAOImpl implements UserConferenceDAO {
     }
 
     @Override
-    public boolean removeRecord(String meeting_ID, String user_ID) {
+    public boolean removeRecord(String meeting_ID, String user_ID) {  //✔️
         Connection connection = null;
         PreparedStatement preparedStatement = null;
-        String sql = "DELETE FROM conference_management.user_conference WHERE user_ID = ? AND meeting_ID = ?;";
+        String sql = "DELETE FROM conference_management.user_conference WHERE user_ID = ? AND meeting_ID = ?";
         try {
             connection = JDBCUtil.getConnection();
             preparedStatement = connection.prepareStatement(sql);
@@ -175,7 +175,7 @@ public class UserConferenceDAOImpl implements UserConferenceDAO {
             preparedStatement.setString(2, meeting_ID);
             int affectRow = preparedStatement.executeUpdate();
             System.out.println("删除会议用户：影响行数：" + affectRow);
-            return true;
+            return affectRow == 1;
         }catch (Exception e) {
             e.printStackTrace();
         }finally {
@@ -194,8 +194,31 @@ public class UserConferenceDAOImpl implements UserConferenceDAO {
         return users;
     }
 
+    @Override
+    public boolean writeEvaluation(String evaluation, String meeting_ID, String user_ID) {
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        String sql = "UPDATE conference_management.user_conference SET evaluation = ? WHERE meeting_ID = ? AND user_ID = ?";
+        try {
+            connection = JDBCUtil.getConnection();
+            preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, evaluation);
+            preparedStatement.setString(2, meeting_ID);
+            preparedStatement.setString(3, user_ID);
+            int affectRow = preparedStatement.executeUpdate();
+            System.out.println("纂写评论：影响行数：" + affectRow);
+            return affectRow == 1;
+        }catch (Exception e) {
+            e.printStackTrace();
+        }finally {
+            JDBCUtil.closeConnection(preparedStatement, connection);
+        }
+        return false;
+    }
+
     public static void main(String[] args) {
         //System.out.println(ConfigHelper.getInstance().getUserConferenceDAO().getConferencesByUser_ID("test0001"));
-        System.out.println(ConfigHelper.getInstance().getUserConferenceDAO().signInMeetingInDB("test0001", "jj_12345"));
+        System.out.println(ConfigHelper.getInstance().getUserConferenceDAO().signInMeetingInDB("test0002", "muggleee"));
+        //System.out.println(ConfigHelper.getInstance().getUserConferenceDAO().removeRecord("muggleee", "test0001"));
     }
 }

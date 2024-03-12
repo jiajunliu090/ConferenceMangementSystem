@@ -15,12 +15,7 @@ public class Conference {
     private LocalDateTime meetingTime; // 在数据库中
     private String theme; // 在数据库中
     private String summary; // 在数据库中
-    // 前三种用于创建者创建
-    public Conference(String meeting_ID, String creator_ID, LocalDateTime meetingTime) {
-        this.meeting_ID = meeting_ID;
-        this.creator_ID = creator_ID;
-        this.meetingTime = meetingTime;
-    }
+    // 前两种用于创建者创建
     public Conference(String meeting_ID, String creator_ID, List<User> participators, LocalDateTime meetingTime) {
         this.meeting_ID = meeting_ID;
         this.creator_ID = creator_ID;

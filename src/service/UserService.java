@@ -22,14 +22,17 @@ public interface UserService {
     // 创建会议
     boolean createConference(String meeting_ID, String room_ID , List<User> participators, LocalDateTime meetingTime, String theme);
     // 修改会议
-    boolean updateConference(); // 先进行验证
+    boolean updateConference(String meeting_ID, String theme, String meetingTime); // 先进行验证
     // 删除会议
     boolean deleteConference(String meeting_ID);
+    // 去掉参加会议
+    boolean removeConference(String meeting_ID);
     // 会议签到
     boolean signInMeeting(String meeting_ID);
     // 修改信息
     boolean updateUser(User userTouUpdate);
     // 评价会议
-    String evaluateMeeting(String evaluation);
+    boolean evaluateMeeting(String evaluation, String meeting_ID);
+
 
 }

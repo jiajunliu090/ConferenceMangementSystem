@@ -16,7 +16,7 @@ public class RoomDAOImpl implements RoomDAO {
     }
 
     @Override
-    public ConferenceRoom getRoomByMeetingID() {
+    public ConferenceRoom getRoomByMeetingID(String meeting_ID) {
         return null;
     }
 

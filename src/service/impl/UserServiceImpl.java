@@ -1,10 +1,10 @@
 package service.impl;
 
-import dao.*;
 import model.Conference;
 import model.User;
 import service.UserService;
 import utilities.ConfigHelper;
+import utilities.DateTimeUtils;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -30,6 +30,7 @@ public class UserServiceImpl implements UserService {
     public boolean loginUser(String user_ID, String u_password) {
         if (ConfigHelper.getInstance().getUserDAO().isCorrect(user_ID, u_password)) {
             this.loginUser_ID = user_ID;
+            System.out.println("登录成功");
             return true;
         }
         return false;
@@ -62,20 +63,28 @@ public class UserServiceImpl implements UserService {
         return ConfigHelper.getInstance().getConferenceDAO().addConference(conference, room_ID);
     }
 
-    @Override
-    public boolean updateConference() { // 修改会议
-
-        return false;
+    @Override // 时间格式：MM.dd.HH.mm
+    public boolean updateConference(String meeting_ID, String theme, String meetingTime) { // 修改会议
+        return ConfigHelper.getInstance().getConferenceDAO().updateConference(meeting_ID, loginUser_ID, theme, DateTimeUtils.fromUserInput(meetingTime));
     }
 
     @Override
     public boolean deleteConference(String meeting_ID) {
+        if (ConfigHelper.getInstance().getConferenceDAO().isCreator(meeting_ID, loginUser_ID)) {
+            ConfigHelper.getInstance().getConferenceDAO().deleteConference(meeting_ID);
+            return true;
+        }
         return false;
     }
 
     @Override
+    public boolean removeConference(String meeting_ID) {
+        return ConfigHelper.getInstance().getUserConferenceDAO().removeRecord(meeting_ID, loginUser_ID);
+    }
+
+    @Override
     public boolean signInMeeting(String meeting_ID) {
-        return false;
+        return ConfigHelper.getInstance().getUserConferenceDAO().signInMeetingInDB(loginUser_ID, meeting_ID);
     }
 
     @Override
@@ -85,8 +94,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public String evaluateMeeting(String evaluation) {
-        return null;
+    public boolean evaluateMeeting(String evaluation, String meeting_ID) {
+        return ConfigHelper.getInstance().getUserConferenceDAO().writeEvaluation(evaluation, meeting_ID, loginUser_ID);
     }
 
     public static void main(String[] args) {
@@ -96,5 +105,6 @@ public class UserServiceImpl implements UserService {
         String loginUser_ID = userService.getLoginUser_ID();
         System.out.println("Login user ID: " + loginUser_ID);
         //System.out.println(userService.deleteUser("test0001", "tpass1", "我同意注销test0001"));
+
     }
 }
