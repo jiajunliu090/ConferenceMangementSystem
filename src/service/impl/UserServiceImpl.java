@@ -88,10 +88,10 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public boolean updateUser(User userTouUpdate) {
-
-        return false;
+    public boolean updateUser(String name, String meetingName, String position, String password, String gender) {
+        return ConfigHelper.getInstance().getUserDAO().updateUser(loginUser_ID, name, meetingName, position, gender, password);
     }
+
 
     @Override
     public boolean evaluateMeeting(String evaluation, String meeting_ID) {

@@ -20,7 +20,7 @@ public interface UserDAO {
     // 删除用户
     boolean deleteUser(String user_ID);
     // 更新用户信息
-    boolean updateUser(String user_id, User newUser);
+    boolean updateUser(String user_id, String name, String meetingName, String position, String gender, String u_password);
     // 根据用户ID查询数据库创建一个用户实例
     User newUserByDB_User_ID(String user_ID);
     // 用户是否存在

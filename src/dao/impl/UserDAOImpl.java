@@ -111,7 +111,7 @@ public class UserDAOImpl implements UserDAO {
     }
 
     @Override
-    public boolean updateUser(String user_id, User newUser) { // 更新用户信息
+    public boolean updateUser(String user_id, String name, String meetingName, String position, String gender, String u_password) { // 更新用户信息
         Connection connection = null;
         PreparedStatement preparedStatement = null;
         String sql = "UPDATE user_info\n" +
@@ -124,12 +124,12 @@ public class UserDAOImpl implements UserDAO {
         try {
             connection = JDBCUtil.getConnection();
             preparedStatement = connection.prepareStatement(sql);
-            preparedStatement.setString(1, newUser.getU_password());
-            preparedStatement.setString(2, newUser.getName());
-            preparedStatement.setString(3, newUser.getMeetingName());
-            preparedStatement.setString(4, newUser.getPosition());
-            preparedStatement.setString(5, newUser.getGender());
-            preparedStatement.setString(6, newUser.getUser_ID());
+            preparedStatement.setString(1, u_password);
+            preparedStatement.setString(2, name);
+            preparedStatement.setString(3, meetingName);
+            preparedStatement.setString(4, position);
+            preparedStatement.setString(5, gender);
+            preparedStatement.setString(6, user_id);
             int affectRow = preparedStatement.executeUpdate();
             System.out.println("更新用户信息：受影响的行数：" + affectRow);
         }catch (Exception e) {
@@ -190,11 +190,12 @@ public class UserDAOImpl implements UserDAO {
         }
         return false;
     }
+    @Override
     public String getU_password(String user_ID) {
         Connection connection = null;
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
-        String sql = "SELECT * FROM user_info WHERE user_ID = ?";
+        String sql = "SELECT u_password FROM user_info WHERE user_ID = ?";
         String res = null;
         try {
             connection = JDBCUtil.getConnection();
@@ -202,9 +203,7 @@ public class UserDAOImpl implements UserDAO {
             preparedStatement.setString(1, user_ID);
             resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
-                if (resultSet.getString("user_ID").equals(user_ID)) {
-                    res = resultSet.getString("u_password");
-                }
+                res = resultSet.getString("u_password");
             }
             return res;
         }catch (Exception e) {

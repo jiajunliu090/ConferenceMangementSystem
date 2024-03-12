@@ -30,7 +30,7 @@ public interface UserService {
     // 会议签到
     boolean signInMeeting(String meeting_ID);
     // 修改信息
-    boolean updateUser(User userTouUpdate);
+    boolean updateUser(String name, String meetingName, String position, String password, String gender);
     // 评价会议
     boolean evaluateMeeting(String evaluation, String meeting_ID);
 

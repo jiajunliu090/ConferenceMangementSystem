@@ -28,6 +28,10 @@ public class RoomConferenceImpl implements RoomConferenceDAO {
      */
     @Override
     public List<Conference> getConferenceByRoomID(ConferenceRoom conferenceRoom) {
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+        String sql = "";
         return null;
     }
 

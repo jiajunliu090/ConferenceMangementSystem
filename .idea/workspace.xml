@@ -4,11 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cdde5272-386d-4684-ab5a-6fc7b5af380a" name="Changes" comment="3.11.20:15用户操作完善">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/09e93f81-fd3d-4f02-8549-fb78308794a9.xml" beforeDir="false" />
+    <list default="true" id="cdde5272-386d-4684-ab5a-6fc7b5af380a" name="Changes" comment="3.12.17:35用户操作完成">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/_2024_3_12__15_09___Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/_2024_3_12__15_09___Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dao/AdminDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dao/AdminDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dao/ConferenceDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dao/ConferenceDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dao/UserDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dao/UserDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dao/impl/AdminDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dao/impl/AdminDAOImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dao/impl/ConferenceDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dao/impl/ConferenceDAOImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dao/impl/RoomConferenceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dao/impl/RoomConferenceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dao/impl/RoomDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dao/impl/RoomDAOImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dao/impl/UserDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dao/impl/UserDAOImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/service/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/service/impl/UserServiceImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -82,7 +91,7 @@
       <recent name="$PROJECT_DIR$/src" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.CaptchaGenerator">
+  <component name="RunManager" selected="应用程序.UserConferenceDAOImpl">
     <configuration name="CaptchaGenerator" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="utilities.CaptchaGenerator" />
       <module name="ConferenceMangementSystem" />
@@ -148,6 +157,15 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="应用程序.UserConferenceDAOImpl" />
+        <item itemvalue="应用程序.CaptchaGenerator" />
+        <item itemvalue="应用程序.JDBCUtil" />
+        <item itemvalue="应用程序.UserDAOImpl" />
+        <item itemvalue="应用程序.UserServiceImpl" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
@@ -217,7 +235,7 @@
       <workItem from="1710232357697" duration="57000" />
       <workItem from="1710232418842" duration="5000" />
       <workItem from="1710232434919" duration="177000" />
-      <workItem from="1710232621543" duration="3395000" />
+      <workItem from="1710232621543" duration="10572000" />
     </task>
     <task id="LOCAL-00001" summary="初始部分代码">
       <option name="closed" value="true" />
@@ -251,7 +269,15 @@
       <option name="project" value="LOCAL" />
       <updated>1710159366546</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="3.12.17:35用户操作完成">
+      <option name="closed" value="true" />
+      <created>1710236099677</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1710236099677</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -288,7 +314,8 @@
     <MESSAGE value="3.5.16.14&#10;完善" />
     <MESSAGE value="3.5.17:45&#10;完善登录" />
     <MESSAGE value="3.11.20:15用户操作完善" />
-    <option name="LAST_COMMIT_MESSAGE" value="3.11.20:15用户操作完善" />
+    <MESSAGE value="3.12.17:35用户操作完成" />
+    <option name="LAST_COMMIT_MESSAGE" value="3.12.17:35用户操作完成" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
