@@ -28,4 +28,8 @@ public interface UserConferenceDAO {
     // 删除会议中参会人员
     boolean removeRecord(String meeting_ID, String user_ID);
     List<User> getUsersByMeeting_ID(String meeting_ID);
+    // 写评论
+    boolean writeEvaluation(String evaluation, String meeting_ID, String user_ID);
+
+
 }
