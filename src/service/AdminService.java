@@ -16,16 +16,13 @@ public interface AdminService {
      * 管理会议：查看；添加；删除；
      * @return
      */
-    List<Conference> getConferenceByUser();
-
-
+    List<Conference> getConferenceByUser(String user_ID);
 
     /**
      * 管理会议室
      */
     // 添加会议室
     boolean addConferenceRoom(String room_ID);
-    boolean addConferenceRoom(String room_ID, String isOpen);
 
     // 开启会议室
     boolean openRoom(String room_ID);

@@ -14,18 +14,7 @@ import java.util.List;
 public class AdminDAOImpl implements AdminDAO {
     private List<Admin> admins;
     public AdminDAOImpl() {
-        Connection connection = null;
-        PreparedStatement preparedStatement = null;
-        ResultSet resultSet = null;
-        String sql = "";
-        try {
-            connection = JDBCUtil.getConnection();
-            preparedStatement = connection.prepareStatement(sql);
-        }catch (Exception e) {
-            e.printStackTrace();
-        }finally {
-            JDBCUtil.closeConnection(resultSet, preparedStatement, connection);
-        }
+
     }
 
 

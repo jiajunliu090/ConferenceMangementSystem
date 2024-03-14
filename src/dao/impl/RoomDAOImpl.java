@@ -1,5 +1,6 @@
 package dao.impl;
 
+import com.mysql.cj.jdbc.ConnectionImpl;
 import dao.RoomDAO;
 import model.ConferenceRoom;
 import utilities.JDBCUtil;
@@ -67,10 +68,14 @@ public class RoomDAOImpl implements RoomDAO {
         Connection connection = null;
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
-        String sql = "";
+        String sql = "DELETE FROM conference_management.room_info WHERE room_ID = ?";
         try {
             connection = JDBCUtil.getConnection();
             preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, room_ID);
+            int affectRow = preparedStatement.executeUpdate();
+            System.out.println("删除会议室：影响行数：" + affectRow);
+            return affectRow == 1;
         }catch (Exception e) {
             e.printStackTrace();
         }finally {
@@ -125,6 +130,49 @@ public class RoomDAOImpl implements RoomDAO {
             e.printStackTrace();
         }finally {
             JDBCUtil.closeConnection(resultSet, preparedStatement, connection);
+        }
+        return false;
+    }
+
+    @Override
+    public boolean openRoom(String room_ID) {
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+
+        String sql = "UPDATE conference_management.room_info SET isOpen = ? WHERE room_ID = ?";
+        try {
+            connection = JDBCUtil.getConnection();
+            preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, "Yes");
+            preparedStatement.setString(2, room_ID);
+            int affect = preparedStatement.executeUpdate();
+            System.out.println("打开会议室：影响行数：" + affect);
+            return affect == 1;
+        }catch (Exception e) {
+            e.printStackTrace();
+        }finally {
+            JDBCUtil.closeConnection(preparedStatement, connection);
+        }
+        return false;
+    }
+
+    @Override
+    public boolean closeRoom(String room_ID) {
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        String sql = "UPDATE conference_management.room_info SET isOpen = ? WHERE room_ID = ?;";
+        try {
+            connection = JDBCUtil.getConnection();
+            preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, "No");
+            preparedStatement.setString(2, room_ID);
+            int affect = preparedStatement.executeUpdate();
+            System.out.println("关闭会议室：影响行数：" + affect);
+            return affect == 1;
+        }catch (Exception e) {
+            e.printStackTrace();
+        }finally {
+            JDBCUtil.closeConnection(preparedStatement, connection);
         }
         return false;
     }
