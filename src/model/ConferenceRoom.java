@@ -1,20 +1,18 @@
 package model;
 
-import java.util.List;
-
 public class ConferenceRoom {
     private String room_ID;
-    private List<Conference> conferenceList;
-    private boolean isOccupied;
-    private boolean isOpen;
+    private String isOccupied;
+    private String isOpen;
+
+    public ConferenceRoom(String room_ID, String isOpen, String isOccupied) {
+        this.room_ID = room_ID;
+        this.isOpen = isOpen;
+        this.isOccupied = isOccupied;
+    }
 
     public ConferenceRoom(String room_ID) {
         this.room_ID = room_ID;
-    }
-
-    public ConferenceRoom(String room_ID, boolean isOpen) {
-        this.room_ID = room_ID;
-        this.isOpen = isOpen;
     }
 
     public String getRoom_ID() {
@@ -25,29 +23,22 @@ public class ConferenceRoom {
         this.room_ID = room_ID;
     }
 
-    public boolean isOccupied() {
+    public String getIsOccupied() {
         return isOccupied;
     }
 
-    public void setOccupied(boolean occupied) {
-        isOccupied = occupied;
+    public void setIsOccupied(String isOccupied) {
+        this.isOccupied = isOccupied;
     }
 
-    public boolean isOpen() {
+    public String getIsOpen() {
         return isOpen;
     }
 
-    public void setOpen(boolean open) {
-        isOpen = open;
+    public void setIsOpen(String isOpen) {
+        this.isOpen = isOpen;
     }
 
-    public List<Conference> getConferenceList() {
-        return conferenceList;
-    }
-
-    public void setConferenceList(List<Conference> conferenceList) {
-        this.conferenceList = conferenceList;
-    }
     @Override
     public String toString() {
         return "会议室ID--" + this.room_ID;

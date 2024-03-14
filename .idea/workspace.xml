@@ -4,20 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cdde5272-386d-4684-ab5a-6fc7b5af380a" name="Changes" comment="3.12.17:35用户操作完成">
+    <list default="true" id="cdde5272-386d-4684-ab5a-6fc7b5af380a" name="Changes" comment="3.12.21:04更新">
       <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dao/AdminDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dao/AdminDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dao/ConferenceDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dao/ConferenceDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dao/UserDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dao/UserDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dao/impl/AdminDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dao/impl/AdminDAOImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MyException/Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MyException/DataVisualization.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dao/RoomDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dao/RoomDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/dao/impl/ConferenceDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dao/impl/ConferenceDAOImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/dao/impl/RoomConferenceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dao/impl/RoomConferenceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/dao/impl/RoomDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dao/impl/RoomDAOImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dao/impl/UserDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dao/impl/UserDAOImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/service/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/service/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/service/impl/UserServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/ConferenceRoom.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/ConferenceRoom.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/service/AdminService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/service/AdminService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,7 +68,10 @@
     &quot;应用程序.CaptchaGenerator.executor&quot;: &quot;Run&quot;,
     &quot;应用程序.ConferenceDAOImpl.executor&quot;: &quot;Run&quot;,
     &quot;应用程序.ConfigHelper.executor&quot;: &quot;Run&quot;,
+    &quot;应用程序.DataVisualization.executor&quot;: &quot;Run&quot;,
     &quot;应用程序.JDBCUtil.executor&quot;: &quot;Run&quot;,
+    &quot;应用程序.RoomConferenceImpl.executor&quot;: &quot;Run&quot;,
+    &quot;应用程序.RoomDAOImpl.executor&quot;: &quot;Run&quot;,
     &quot;应用程序.UserConferenceDAOImpl.executor&quot;: &quot;Run&quot;,
     &quot;应用程序.UserDAOImpl.executor&quot;: &quot;Run&quot;,
     &quot;应用程序.UserServiceImpl.executor&quot;: &quot;Run&quot;
@@ -91,13 +90,13 @@
       <recent name="$PROJECT_DIR$/src" />
     </key>
   </component>
-  <component name="RunManager" selected="应用程序.UserConferenceDAOImpl">
-    <configuration name="CaptchaGenerator" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="utilities.CaptchaGenerator" />
+  <component name="RunManager" selected="应用程序.JDBCUtil">
+    <configuration name="DataVisualization" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="MyException.DataVisualization" />
       <module name="ConferenceMangementSystem" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="utilities.*" />
+          <option name="PATTERN" value="MyException.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -118,8 +117,21 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="UserConferenceDAOImpl" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="dao.impl.UserConferenceDAOImpl" />
+    <configuration name="RoomConferenceImpl" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="dao.impl.RoomConferenceImpl" />
+      <module name="ConferenceMangementSystem" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="dao.impl.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="RoomDAOImpl" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="dao.impl.RoomDAOImpl" />
       <module name="ConferenceMangementSystem" />
       <extension name="coverage">
         <pattern>
@@ -144,26 +156,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="UserServiceImpl" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="service.impl.UserServiceImpl" />
-      <module name="ConferenceMangementSystem" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="service.impl.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="应用程序.UserConferenceDAOImpl" />
-        <item itemvalue="应用程序.CaptchaGenerator" />
         <item itemvalue="应用程序.JDBCUtil" />
         <item itemvalue="应用程序.UserDAOImpl" />
-        <item itemvalue="应用程序.UserServiceImpl" />
+        <item itemvalue="应用程序.RoomDAOImpl" />
+        <item itemvalue="应用程序.DataVisualization" />
+        <item itemvalue="应用程序.RoomConferenceImpl" />
       </list>
     </recent_temporary>
   </component>
@@ -235,7 +234,11 @@
       <workItem from="1710232357697" duration="57000" />
       <workItem from="1710232418842" duration="5000" />
       <workItem from="1710232434919" duration="177000" />
-      <workItem from="1710232621543" duration="10572000" />
+      <workItem from="1710232621543" duration="10886000" />
+      <workItem from="1710317854989" duration="2009000" />
+      <workItem from="1710320078734" duration="295000" />
+      <workItem from="1710320474248" duration="1813000" />
+      <workItem from="1710413808011" duration="603000" />
     </task>
     <task id="LOCAL-00001" summary="初始部分代码">
       <option name="closed" value="true" />
@@ -277,7 +280,15 @@
       <option name="project" value="LOCAL" />
       <updated>1710236099677</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="3.12.21:04更新">
+      <option name="closed" value="true" />
+      <created>1710248682656</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1710248682656</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -315,7 +326,8 @@
     <MESSAGE value="3.5.17:45&#10;完善登录" />
     <MESSAGE value="3.11.20:15用户操作完善" />
     <MESSAGE value="3.12.17:35用户操作完成" />
-    <option name="LAST_COMMIT_MESSAGE" value="3.12.17:35用户操作完成" />
+    <MESSAGE value="3.12.21:04更新" />
+    <option name="LAST_COMMIT_MESSAGE" value="3.12.21:04更新" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -352,37 +364,37 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/dao/impl/ConferenceDAOImpl.java</url>
-          <line>80</line>
+          <line>82</line>
           <option name="timeStamp" value="88" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/dao/impl/ConferenceDAOImpl.java</url>
-          <line>81</line>
+          <line>83</line>
           <option name="timeStamp" value="89" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/dao/impl/ConferenceDAOImpl.java</url>
-          <line>82</line>
+          <line>84</line>
           <option name="timeStamp" value="90" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/dao/impl/ConferenceDAOImpl.java</url>
-          <line>83</line>
+          <line>85</line>
           <option name="timeStamp" value="91" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/dao/impl/ConferenceDAOImpl.java</url>
-          <line>55</line>
+          <line>57</line>
           <option name="timeStamp" value="92" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/dao/impl/ConferenceDAOImpl.java</url>
-          <line>56</line>
+          <line>58</line>
           <option name="timeStamp" value="93" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/dao/impl/ConferenceDAOImpl.java</url>
-          <line>57</line>
+          <line>59</line>
           <option name="timeStamp" value="94" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -439,6 +451,11 @@
           <url>file://$PROJECT_DIR$/src/dao/impl/UserConferenceDAOImpl.java</url>
           <line>52</line>
           <option name="timeStamp" value="112" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/MyException/DataVisualization.java</url>
+          <line>7</line>
+          <option name="timeStamp" value="113" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

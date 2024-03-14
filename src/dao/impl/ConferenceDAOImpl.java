@@ -38,10 +38,12 @@ public class ConferenceDAOImpl implements ConferenceDAO {
             preparedStatement.setString(3, conferenceToAdd.getTheme());
             preparedStatement.setString(4, DateTimeUtils.toDbDateTime(conferenceToAdd.getMeetingTime()));
             preparedStatement.setString(5, conferenceToAdd.getCreator_ID());
-            preparedStatement.executeUpdate();
+            int affectRow = preparedStatement.executeUpdate();
+            System.out.println("创建会议：影响行数：" + affectRow);
             // 调用RoomConferenceDAO
-            //// 将会议加入到会议室中
-            //ConfigHelper.getInstance().getRoomConferenceDAO().addMeetingToRoom();
+            // 将会议加入到会议室中
+            ConfigHelper.getInstance().getRoomConferenceDAO().addMeetingToRoom(conferenceToAdd.getMeeting_ID(), room_ID,
+                    conferenceToAdd.getMeetingTime());
             System.out.println("会议创建完成");
         }catch (Exception e) {
             e.printStackTrace();
