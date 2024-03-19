@@ -20,8 +20,7 @@ import java.util.Map;
 
 public class ConferenceDAOImpl implements ConferenceDAO {
 
-    public ConferenceDAOImpl() { // 拿到所有会议信息
-
+    public ConferenceDAOImpl() {
     }
 
     @Override

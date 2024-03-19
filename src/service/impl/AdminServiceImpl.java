@@ -18,13 +18,11 @@ public class AdminServiceImpl implements AdminService {
 
     @Override
     public List<Conference> getConferenceByUser(String user_ID) {
-
         return ConfigHelper.getInstance().getUserConferenceDAO().getConferencesByUser_ID(user_ID);
     }
 
     @Override
     public boolean addConferenceRoom(String room_ID) {
-
         return ConfigHelper.getInstance().getRoomDAO().addRoom(room_ID);
     }
 
@@ -36,5 +34,13 @@ public class AdminServiceImpl implements AdminService {
     @Override
     public boolean closeRoom(String room_ID) {
         return ConfigHelper.getInstance().getRoomDAO().closeRoom(room_ID);
+    }
+
+    public static void main(String[] args) {
+        AdminService adminService = new AdminServiceImpl();
+        //adminService.addConferenceRoom("1234567H");
+        //adminService.closeRoom("1234567H");
+        //adminService.openRoom("1234567H");
+        //adminService.getConferenceByUser("1234");
     }
 }

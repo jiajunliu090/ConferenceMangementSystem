@@ -23,15 +23,28 @@ public class RoomConferenceImpl implements RoomConferenceDAO {
      * 会议时间-meetingTime-LocalDateTime;
      * 会议主题-theme-String;
      * 会议总结-summary-String;
-     * @param conferenceRoom
+     * @param room_ID
      * @return
      */
     @Override
-    public List<Conference> getConferenceByRoomID(ConferenceRoom conferenceRoom) {
+    public List<Conference> getConferenceByRoomID(String room_ID) {
         Connection connection = null;
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
-        String sql = "";
+        String sql = "SELECT ci.* \n" + // 查出所有的会议信息
+                "FROM conference_info ci\n" +
+                "INNER JOIN room_conference rc ON ci.meeting_ID = rc.meeting_ID\n" +
+                "WHERE rc.room_ID = ?";
+        try {
+            connection = JDBCUtil.getConnection();
+            preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, room_ID);
+
+        }catch (Exception e) {
+
+        }finally {
+            JDBCUtil.closeConnection(resultSet, preparedStatement, connection);
+        }
         return null;
     }
 

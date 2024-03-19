@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface RoomConferenceDAO {
     // 根据会议室查会议:得到会议所有信息
-    List<Conference> getConferenceByRoomID(ConferenceRoom conferenceRoom);
+    List<Conference> getConferenceByRoomID(String room_ID);
     // 将会议加入到会议室中
     boolean addMeetingToRoom(String meeting_ID, String room_ID, LocalDateTime meetingTime);
 

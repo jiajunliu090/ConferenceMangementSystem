@@ -23,10 +23,8 @@ public interface AdminService {
      */
     // 添加会议室
     boolean addConferenceRoom(String room_ID);
-
     // 开启会议室
     boolean openRoom(String room_ID);
-
     // 关闭会议室
     boolean closeRoom(String room_ID);
 
