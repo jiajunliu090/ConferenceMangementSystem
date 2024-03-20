@@ -15,6 +15,7 @@ public interface UserService {
     // 登录
     boolean loginUser(String user_ID, String u_password);
     String getLoginUser_ID();
+    User getLoginUser();
     // 注销
     boolean deleteUser(String user_ID, String u_password, String ensure);
     // 查看自己需要参加的会议

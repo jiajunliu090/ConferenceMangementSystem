@@ -6,6 +6,8 @@ import model.User;
 import java.util.List;
 
 public interface AdminService {
+    // 登录
+    boolean login(String admin_ID, String a_password);
     /**
      * 管理用户：添加；删除；
      * @return

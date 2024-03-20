@@ -189,7 +189,7 @@ public class UserConferenceDAOImpl implements UserConferenceDAO {
         List<String> participatorsByMeetingId = getParticipatorsByMeeting_ID(meeting_ID);
         List<User> users = new ArrayList<>();
         for (String s : participatorsByMeetingId) {
-            users.add(ConfigHelper.getInstance().getUserDAO().getUserById(s));
+            users.add(ConfigHelper.getInstance().getUserDAO().newUserByDB_User_ID(s));
         }
         return users;
     }

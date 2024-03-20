@@ -4,14 +4,31 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cdde5272-386d-4684-ab5a-6fc7b5af380a" name="Changes" comment="3.14.20:58管理员操作">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/_2024_3_12__15_09___Changes_.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2024_3_12,_15_09_取消提交了更改_[Changes]/shelved.patch" beforeDir="false" />
+    <list default="true" id="cdde5272-386d-4684-ab5a-6fc7b5af380a" name="Changes" comment="3.19.18.42完善">
+      <change afterPath="$PROJECT_DIR$/libs/flatlaf-3.4（2）.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/resources/image/icons8-search-32(1).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/resources/image/icons8-search-36(1).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/view/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/view/admin/AdminUI.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/view/user/UserUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dao/RoomConferenceDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dao/RoomConferenceDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ConferenceMangementSystem.iml" beforeDir="false" afterPath="$PROJECT_DIR$/ConferenceMangementSystem.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dao/AdminDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dao/AdminDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dao/UserDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dao/UserDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/dao/impl/AdminDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dao/impl/AdminDAOImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dao/impl/ConferenceDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dao/impl/ConferenceDAOImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dao/impl/RoomConferenceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dao/impl/RoomConferenceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dao/impl/UserConferenceDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dao/impl/UserConferenceDAOImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dao/impl/UserDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dao/impl/UserDAOImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/service/AdminService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/service/AdminService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/service/impl/AdminServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/service/impl/AdminServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/service/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/service/impl/UserServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utilities/CaptchaGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utilities/CaptchaGenerator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/FocusableBorderPasswordField.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/start/FocusableBorderPasswordField.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/FocusableBorderTextField.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/start/FocusableBorderTextField.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/Login.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/start/Login.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/Sign.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/start/Sign.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/UserUI.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,9 +62,13 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
     "Application.AdminDAOImpl.executor": "Run",
+    "Application.AdminServiceImpl.executor": "Run",
+    "Application.CaptchaGenerator.executor": "Run",
     "Application.CodeFontsExample.executor": "Run",
     "Application.JDBCUtil.executor": "Run",
+    "Application.Main.executor": "Run",
     "Application.UserDAOImpl.executor": "Run",
     "Application.UserServiceImpl.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
@@ -84,13 +105,14 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/resources/image" />
       <recent name="$PROJECT_DIR$/libs" />
       <recent name="$PROJECT_DIR$/src/libs" />
       <recent name="$PROJECT_DIR$/src/resources" />
       <recent name="$PROJECT_DIR$/src" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.AdminServiceImpl">
+  <component name="RunManager" selected="Application.Main">
     <configuration name="AdminDAOImpl" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="dao.impl.AdminDAOImpl" />
       <module name="ConferenceMangementSystem" />
@@ -117,6 +139,19 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="CaptchaGenerator" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="utilities.CaptchaGenerator" />
+      <module name="ConferenceMangementSystem" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="utilities.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="CodeFontsExample" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="MyException.CodeFontsExample" />
       <module name="ConferenceMangementSystem" />
@@ -130,25 +165,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="RoomDAOImpl" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="dao.impl.RoomDAOImpl" />
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="view.Main" />
       <module name="ConferenceMangementSystem" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="dao.impl.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="UserDAOImpl" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="dao.impl.UserDAOImpl" />
-      <module name="ConferenceMangementSystem" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="dao.impl.*" />
+          <option name="PATTERN" value="view.user.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -158,8 +180,10 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.AdminServiceImpl" />
+        <item itemvalue="Application.Main" />
         <item itemvalue="Application.AdminDAOImpl" />
+        <item itemvalue="Application.CaptchaGenerator" />
+        <item itemvalue="Application.AdminServiceImpl" />
         <item itemvalue="Application.CodeFontsExample" />
       </list>
     </recent_temporary>
@@ -243,7 +267,21 @@
       <workItem from="1710418827482" duration="678000" />
       <workItem from="1710420024325" duration="4147000" />
       <workItem from="1710765212746" duration="37000" />
-      <workItem from="1710842294786" duration="1635000" />
+      <workItem from="1710842294786" duration="2771000" />
+      <workItem from="1710847536270" duration="1021000" />
+      <workItem from="1710850939726" duration="696000" />
+      <workItem from="1710902134034" duration="1326000" />
+      <workItem from="1710921397872" duration="1138000" />
+      <workItem from="1710923406358" duration="3000" />
+      <workItem from="1710926516217" duration="58000" />
+      <workItem from="1710926725743" duration="12000" />
+      <workItem from="1710935309205" duration="157000" />
+      <workItem from="1710935517860" duration="61000" />
+      <workItem from="1710935595795" duration="39000" />
+      <workItem from="1710935643299" duration="554000" />
+      <workItem from="1710936233880" duration="1070000" />
+      <workItem from="1710937334045" duration="189000" />
+      <workItem from="1710937650266" duration="1648000" />
     </task>
     <task id="LOCAL-00001" summary="初始部分代码">
       <option name="closed" value="true" />
@@ -309,7 +347,15 @@
       <option name="project" value="LOCAL" />
       <updated>1710421080488</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="3.19.18.42完善">
+      <option name="closed" value="true" />
+      <created>1710844945579</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1710844945579</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -350,7 +396,8 @@
     <MESSAGE value="3.12.21:04更新" />
     <MESSAGE value="3.14.19:11更新" />
     <MESSAGE value="3.14.20:58管理员操作" />
-    <option name="LAST_COMMIT_MESSAGE" value="3.14.20:58管理员操作" />
+    <MESSAGE value="3.19.18.42完善" />
+    <option name="LAST_COMMIT_MESSAGE" value="3.19.18.42完善" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -394,6 +441,424 @@
           <url>file://$PROJECT_DIR$/src/MyException/DataVisualization.java</url>
           <line>7</line>
           <option name="timeStamp" value="113" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/dao/impl/UserDAOImpl.java</url>
+          <line>166</line>
+          <option name="timeStamp" value="115" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/dao/impl/UserDAOImpl.java</url>
+          <line>167</line>
+          <option name="timeStamp" value="116" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/dao/impl/UserDAOImpl.java</url>
+          <line>168</line>
+          <option name="timeStamp" value="118" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/dao/impl/UserDAOImpl.java</url>
+          <line>169</line>
+          <option name="timeStamp" value="119" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/dao/impl/UserDAOImpl.java</url>
+          <line>170</line>
+          <option name="timeStamp" value="120" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/dao/impl/UserDAOImpl.java</url>
+          <line>171</line>
+          <option name="timeStamp" value="121" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/dao/impl/UserDAOImpl.java</url>
+          <line>172</line>
+          <option name="timeStamp" value="122" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/dao/impl/UserDAOImpl.java</url>
+          <line>173</line>
+          <option name="timeStamp" value="123" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/dao/impl/UserDAOImpl.java</url>
+          <line>174</line>
+          <option name="timeStamp" value="124" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/dao/impl/UserDAOImpl.java</url>
+          <line>175</line>
+          <option name="timeStamp" value="126" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/dao/impl/UserDAOImpl.java</url>
+          <line>176</line>
+          <option name="timeStamp" value="127" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/dao/impl/UserDAOImpl.java</url>
+          <line>177</line>
+          <option name="timeStamp" value="128" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/dao/impl/UserDAOImpl.java</url>
+          <line>180</line>
+          <option name="timeStamp" value="129" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/dao/impl/UserDAOImpl.java</url>
+          <line>181</line>
+          <option name="timeStamp" value="130" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/dao/impl/UserDAOImpl.java</url>
+          <line>182</line>
+          <option name="timeStamp" value="131" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/dao/impl/UserDAOImpl.java</url>
+          <line>183</line>
+          <option name="timeStamp" value="132" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/dao/impl/UserDAOImpl.java</url>
+          <line>213</line>
+          <option name="timeStamp" value="133" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/dao/impl/UserDAOImpl.java</url>
+          <line>214</line>
+          <option name="timeStamp" value="134" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/dao/impl/UserDAOImpl.java</url>
+          <line>215</line>
+          <option name="timeStamp" value="135" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/dao/impl/UserDAOImpl.java</url>
+          <line>216</line>
+          <option name="timeStamp" value="136" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/dao/impl/UserDAOImpl.java</url>
+          <line>217</line>
+          <option name="timeStamp" value="137" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/dao/impl/UserDAOImpl.java</url>
+          <line>218</line>
+          <option name="timeStamp" value="138" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/dao/impl/UserDAOImpl.java</url>
+          <line>219</line>
+          <option name="timeStamp" value="139" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/dao/impl/UserDAOImpl.java</url>
+          <line>220</line>
+          <option name="timeStamp" value="140" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/dao/impl/UserDAOImpl.java</url>
+          <line>221</line>
+          <option name="timeStamp" value="141" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/dao/impl/UserDAOImpl.java</url>
+          <line>222</line>
+          <option name="timeStamp" value="142" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/dao/impl/UserDAOImpl.java</url>
+          <line>130</line>
+          <option name="timeStamp" value="144" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/dao/impl/UserDAOImpl.java</url>
+          <line>131</line>
+          <option name="timeStamp" value="145" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/dao/impl/UserDAOImpl.java</url>
+          <line>132</line>
+          <option name="timeStamp" value="146" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/dao/impl/UserDAOImpl.java</url>
+          <line>133</line>
+          <option name="timeStamp" value="147" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/dao/impl/UserDAOImpl.java</url>
+          <line>134</line>
+          <option name="timeStamp" value="148" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/dao/impl/UserDAOImpl.java</url>
+          <line>135</line>
+          <option name="timeStamp" value="149" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/dao/impl/UserDAOImpl.java</url>
+          <line>136</line>
+          <option name="timeStamp" value="150" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/dao/impl/UserDAOImpl.java</url>
+          <line>137</line>
+          <option name="timeStamp" value="151" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/dao/impl/UserDAOImpl.java</url>
+          <line>138</line>
+          <option name="timeStamp" value="152" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/dao/impl/UserDAOImpl.java</url>
+          <line>139</line>
+          <option name="timeStamp" value="153" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/dao/impl/UserDAOImpl.java</url>
+          <line>140</line>
+          <option name="timeStamp" value="154" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/dao/impl/UserDAOImpl.java</url>
+          <line>141</line>
+          <option name="timeStamp" value="155" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/dao/impl/UserDAOImpl.java</url>
+          <line>142</line>
+          <option name="timeStamp" value="156" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/dao/impl/UserDAOImpl.java</url>
+          <line>143</line>
+          <option name="timeStamp" value="157" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/dao/impl/UserDAOImpl.java</url>
+          <line>144</line>
+          <option name="timeStamp" value="158" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/dao/impl/UserDAOImpl.java</url>
+          <line>146</line>
+          <option name="timeStamp" value="159" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/dao/impl/UserDAOImpl.java</url>
+          <line>147</line>
+          <option name="timeStamp" value="160" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/dao/impl/UserDAOImpl.java</url>
+          <line>148</line>
+          <option name="timeStamp" value="161" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/dao/impl/UserDAOImpl.java</url>
+          <line>149</line>
+          <option name="timeStamp" value="162" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/dao/impl/UserDAOImpl.java</url>
+          <line>150</line>
+          <option name="timeStamp" value="163" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/dao/impl/UserDAOImpl.java</url>
+          <line>151</line>
+          <option name="timeStamp" value="164" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/dao/impl/UserDAOImpl.java</url>
+          <line>153</line>
+          <option name="timeStamp" value="165" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/dao/impl/UserDAOImpl.java</url>
+          <line>154</line>
+          <option name="timeStamp" value="166" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/dao/impl/UserDAOImpl.java</url>
+          <line>155</line>
+          <option name="timeStamp" value="167" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/dao/impl/UserDAOImpl.java</url>
+          <line>156</line>
+          <option name="timeStamp" value="168" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/dao/impl/UserDAOImpl.java</url>
+          <line>157</line>
+          <option name="timeStamp" value="169" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/dao/impl/UserDAOImpl.java</url>
+          <line>158</line>
+          <option name="timeStamp" value="170" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/dao/impl/UserDAOImpl.java</url>
+          <line>159</line>
+          <option name="timeStamp" value="171" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/dao/impl/UserDAOImpl.java</url>
+          <line>160</line>
+          <option name="timeStamp" value="172" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/dao/impl/UserDAOImpl.java</url>
+          <line>161</line>
+          <option name="timeStamp" value="173" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/view/start/Login.java</url>
+          <line>81</line>
+          <option name="timeStamp" value="174" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/view/start/Login.java</url>
+          <line>82</line>
+          <option name="timeStamp" value="175" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/view/start/Login.java</url>
+          <line>83</line>
+          <option name="timeStamp" value="176" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/view/start/Login.java</url>
+          <line>84</line>
+          <option name="timeStamp" value="177" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/view/start/Login.java</url>
+          <line>85</line>
+          <option name="timeStamp" value="178" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/view/start/Login.java</url>
+          <line>86</line>
+          <option name="timeStamp" value="179" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/view/user/UserUI.java</url>
+          <line>171</line>
+          <option name="timeStamp" value="180" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/view/user/UserUI.java</url>
+          <line>172</line>
+          <option name="timeStamp" value="181" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/view/user/UserUI.java</url>
+          <line>173</line>
+          <option name="timeStamp" value="182" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/view/user/UserUI.java</url>
+          <line>174</line>
+          <option name="timeStamp" value="183" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/service/impl/UserServiceImpl.java</url>
+          <line>44</line>
+          <option name="timeStamp" value="185" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/service/impl/UserServiceImpl.java</url>
+          <line>30</line>
+          <option name="timeStamp" value="187" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/service/impl/UserServiceImpl.java</url>
+          <line>31</line>
+          <option name="timeStamp" value="188" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/service/impl/UserServiceImpl.java</url>
+          <line>32</line>
+          <option name="timeStamp" value="189" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/service/impl/UserServiceImpl.java</url>
+          <line>33</line>
+          <option name="timeStamp" value="190" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/service/impl/UserServiceImpl.java</url>
+          <line>34</line>
+          <properties>
+            <option name="lambda-ordinal" value="-1" />
+          </properties>
+          <option name="timeStamp" value="191" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/service/impl/UserServiceImpl.java</url>
+          <line>39</line>
+          <option name="timeStamp" value="193" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/service/impl/UserServiceImpl.java</url>
+          <line>40</line>
+          <option name="timeStamp" value="194" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/dao/impl/UserDAOImpl.java</url>
+          <line>165</line>
+          <properties class="dao.impl.UserDAOImpl" method="isExist">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="114" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/dao/impl/UserDAOImpl.java</url>
+          <line>129</line>
+          <properties class="dao.impl.UserDAOImpl" method="newUserByDB_User_ID">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="143" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/service/impl/UserServiceImpl.java</url>
+          <line>43</line>
+          <properties class="service.impl.UserServiceImpl" method="getLoginUser">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="184" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/service/impl/UserServiceImpl.java</url>
+          <line>29</line>
+          <properties class="service.impl.UserServiceImpl" method="loginUser">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="186" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/service/impl/UserServiceImpl.java</url>
+          <line>38</line>
+          <properties class="service.impl.UserServiceImpl" method="getLoginUser_ID">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="192" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

@@ -16,6 +16,11 @@ public class UserDAOImpl implements UserDAO {
     List<User> users;
 
     public UserDAOImpl() {
+
+    }
+
+    @Override
+    public List<User> getAllUsers() {
         Connection connection = null;
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
@@ -40,25 +45,6 @@ public class UserDAOImpl implements UserDAO {
         }finally {
             JDBCUtil.closeConnection(resultSet, preparedStatement, connection);
         }
-    }
-    @Override
-    public User getUserById(String userId) {
-        if (isExist(userId)) {
-            for (Object o : users) {
-                User user = (User)o;
-                if (user.getUser_ID().equals(userId)) {
-                    System.out.println("获取用户成功;");
-                    return user;
-                }
-            }
-            System.out.println("在数据库中存在，但未更新至users中;");
-        }
-        System.out.println("用户不存在;");
-        return null;
-    }
-
-    @Override
-    public List<User> getAllUsers() {
         return users;
     }
 
@@ -81,7 +67,7 @@ public class UserDAOImpl implements UserDAO {
             preparedStatement.setString(3, curToAdd.getName());
             int affectRow = preparedStatement.executeUpdate();
             System.out.println("添加用户：受影响的行数：" + affectRow);
-            return true;
+            return affectRow == 1;
         }catch (Exception e) {
             e.printStackTrace();
         }finally {
@@ -146,25 +132,34 @@ public class UserDAOImpl implements UserDAO {
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
         String sql = "SELECT * FROM user_info WHERE user_ID = ?";
+        String uPassword = null;
+        String name = null;
+        String meetingName = null;
+        String position = null;
+        String gender = null;
+        User user = null;
         try {
             connection = JDBCUtil.getConnection();
             preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setString(1, user_ID);
             resultSet = preparedStatement.executeQuery();
+
             while (resultSet.next()) {
-                String uPassword = resultSet.getString("u_password");
-                String name = resultSet.getString("name");
-                String meetingName = resultSet.getString("meetingName");
-                String position = resultSet.getString("position");
-                String gender = resultSet.getString("gender");
-                return new User(user_ID, uPassword, name, meetingName, position, gender);
+                uPassword = resultSet.getString("u_password");
+                name = resultSet.getString("name");
+                meetingName = resultSet.getString("meetingName");
+                position = resultSet.getString("position");
+                gender = resultSet.getString("gender");
             }
+            user = new User(user_ID, uPassword, name, meetingName, position, gender);
+            System.out.println(user);
+            return user;
         }catch (Exception e) {
             e.printStackTrace();
         }finally {
             JDBCUtil.closeConnection(resultSet, preparedStatement, connection);
         }
-        return null;
+        return user;
     }
 
     @Override

@@ -10,5 +10,6 @@
     <orderEntry type="library" name="mysql-connector-j-8.2.0" level="project" />
     <orderEntry type="library" name="tess4j-5.10.0" level="project" />
     <orderEntry type="library" name="tess4j-5.10.0" level="project" />
+    <orderEntry type="library" name="flatlaf-3.4（2）" level="project" />
   </component>
 </module>

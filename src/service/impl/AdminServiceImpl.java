@@ -12,6 +12,11 @@ import java.util.List;
 public class AdminServiceImpl implements AdminService {
 
     @Override
+    public boolean login(String admin_ID, String a_password) {
+        return ConfigHelper.getInstance().getAdminDAO().login(admin_ID, a_password);
+    }
+
+    @Override
     public List<User> getAllUsers() {
         return ConfigHelper.getInstance().getUserDAO().getAllUsers();
     }

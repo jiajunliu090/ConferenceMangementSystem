@@ -32,13 +32,17 @@ public class UserServiceImpl implements UserService {
             this.loginUser_ID = user_ID;
             System.out.println("登录成功");
             return true;
-        }
-        return false;
+        }else return false;
     }
 
     @Override
     public String getLoginUser_ID() {
-        return loginUser_ID;
+        return this.loginUser_ID;
+    }
+
+    @Override
+    public User getLoginUser() {
+        return ConfigHelper.getInstance().getUserDAO().newUserByDB_User_ID(getLoginUser_ID());
     }
 
 

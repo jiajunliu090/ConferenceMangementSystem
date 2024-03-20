@@ -1,7 +1,9 @@
-package view;
+package view.start;
+
+import service.UserService;
+import service.impl.UserServiceImpl;
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -13,12 +15,16 @@ public class Sign extends JFrame {
     //将复选框加入容器
     JCheckBox agreeField = new JCheckBox("同意用户协议");
     JButton nextButton = new JButton("下一步");
+    UserService userService = new UserServiceImpl();
 
+    {
+        setBounds(450, 200, 545,540);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    }
     public Sign(){
         //设置窗口标题
         this.setTitle("注册");
         //设置窗口大小
-        this.setBounds(700,200,600,600);
         //添加一个面板作为容器
         JPanel root = new JPanel();
         this.setContentPane(root);
@@ -71,11 +77,16 @@ public class Sign extends JFrame {
         nextButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                test();
+                if (test() && userService.registerUser(userNameField.getText(), passWordField.getPassword().toString(), nameField.getText())) {
+                    System.out.println("注册成功");
+                    Login login = new Login();
+                    login.setVisible(true);
+
+                }
             }
         });
     }
-    public void test(){
+    public boolean test(){
         String userName = userNameField.getText().trim();
         String passWord = passWordField.getText().trim();
         String affirm = affirmField.getText().trim();
@@ -86,15 +97,19 @@ public class Sign extends JFrame {
         if("".equals(userName)){
             System.out.println("账号不能为空");
             JOptionPane.showMessageDialog(null,"账号不能为空");
+            return false;
         }
         else if("".equals(passWord)){
             System.out.println("密码不能为空");
             JOptionPane.showMessageDialog(null,"密码不能为空");
+            return false;
         }
         else if("".equals(affirm)){
             System.out.println("确认密码不能为空");
-            JOptionPane.showMessageDialog(null,"确认密码不能为空");
+            JOptionPane.showMessageDialog(null,"请确认密码");
+            return false;
         }
+        return true;
     }
 
 

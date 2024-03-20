@@ -12,8 +12,7 @@ public interface UserDAO {
     /**
      * 对用户操作
      */
-    // 查用户
-    User getUserById(String userId);
+
     List<User> getAllUsers();
     // 添加用户
     boolean addUser(User curToAdd);
@@ -22,6 +21,7 @@ public interface UserDAO {
     // 更新用户信息
     boolean updateUser(String user_id, String name, String meetingName, String position, String gender, String u_password);
     // 根据用户ID查询数据库创建一个用户实例
+    // 查用户
     User newUserByDB_User_ID(String user_ID);
     // 用户是否存在
     boolean isExist(String user_ID);

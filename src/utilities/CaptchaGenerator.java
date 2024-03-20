@@ -7,6 +7,7 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.time.LocalDateTime;
 import java.util.Random;
 
 public class CaptchaGenerator {
@@ -59,6 +60,12 @@ public class CaptchaGenerator {
             int y = random.nextInt(HEIGHT);
             g.drawOval(x, y, 1, 1);
         }
+        StringBuffer sb = new StringBuffer();
+        LocalDateTime localDateTime = LocalDateTime.now();
+
+        sb.append(localDateTime).append(".png");
+        System.out.println(sb);
+        saveImageToFile(image, sb.toString());
         return new Captcha(code, image);
     }
 
@@ -82,7 +89,8 @@ public class CaptchaGenerator {
     }
     public void saveImageToFile(BufferedImage image, String filename) {
         try {
-            File output = new File(filename);
+            String filePath = new StringBuffer().append("/Users/liujiajun/IdeaProjects/ConferenceMangementSystem/src/resources/captchaImage").append(File.separator).append(filename).toString();
+            File output = new File(filePath);
             ImageIO.write(image, "png", output);
             System.out.println("验证码图片已保存到：" + output.getAbsolutePath());
         } catch (IOException e) {
@@ -94,9 +102,7 @@ public class CaptchaGenerator {
     public static void main(String[] args) {
         CaptchaGenerator generator = new CaptchaGenerator();
         Captcha captchaImage = generator.generateCaptchaImage();
-        generator.saveImageToFile(captchaImage.getImage(), "c.png");
-        // 这里可以将captchaImage转换为Base64字符串，然后发送到前端
-        System.out.println(captchaImage);
+
     }
 }
 
