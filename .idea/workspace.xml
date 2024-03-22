@@ -4,39 +4,27 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9ade985b-690e-48b7-9e39-aa0553ad044f" name="Changes" comment="3.12.21:04更新">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/flatlaf_3_42.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/view/AlertMetting.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/view/ChangeInformation.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/view/CreateMetting.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/view/DeleteMetting.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/view/EvaluationMetting.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/view/Schedule.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/view/SignMeeting.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2024_3_12_17_38__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2024_3_12_17_38__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2024_3_12_17_41__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2024_3_12_17_41__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2024_3_12_18_32__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2024_3_12_18_32__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ConferenceMangementSystem.iml" beforeDir="false" afterPath="$PROJECT_DIR$/ConferenceMangementSystem.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/user/UserUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/user/UserUI.java" afterDir="false" />
+    <list default="true" id="9ade985b-690e-48b7-9e39-aa0553ad044f" name="Changes" comment="3.22.20.20完善">
+      <change beforePath="$PROJECT_DIR$/src/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/service/UserService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "main",
-    "node.js.selected.package.tslint": "(autodetect)"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="view.Main" />
@@ -60,8 +48,20 @@
   <component name="TaskManager">
     <servers />
   </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ID_ORDER">
+      <list>
+        <option value="Default.Root" />
+        <option value="Default.Author" />
+        <option value="Default.Date" />
+        <option value="Default.Subject" />
+        <option value="Space.CommitStatus" />
+      </list>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="3.12.21:04更新" />
-    <option name="LAST_COMMIT_MESSAGE" value="3.12.21:04更新" />
+    <MESSAGE value="3.22.20.20完善" />
+    <option name="LAST_COMMIT_MESSAGE" value="3.22.20.20完善" />
   </component>
 </project>

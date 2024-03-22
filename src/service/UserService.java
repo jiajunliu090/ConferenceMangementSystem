@@ -36,4 +36,5 @@ public interface UserService {
     boolean evaluateMeeting(String evaluation, String meeting_ID);
 
 
+    boolean createConference(String text, List<String> list, LocalDateTime localDateTime);
 }
