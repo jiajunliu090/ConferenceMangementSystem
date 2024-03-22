@@ -1,5 +1,8 @@
 package view.user;
 
+import view.element.FocusButton;
+import view.element.MyJTextField;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -8,15 +11,15 @@ public class changeMeetingInfoJFrame extends JFrame {
     private JLabel mainLabel;
     private JLabel themeLabel;
     private JLabel label3;
-    private JTextField themeField;
-    private JTextField meetingTimeField;
+    private MyJTextField themeField;
+    private MyJTextField meetingTimeField;
     private JComboBox roomBox;
     private JLabel label4;
     private JLabel addLabel;
     private JLabel deleteLabel;
-    private JTextField deleteParticipateField;
-    private JTextField addParticipateField;
-    private JButton finishButton;
+    private MyJTextField deleteParticipateField;
+    private MyJTextField addParticipateField;
+    private FocusButton finishButton;
     public changeMeetingInfoJFrame() {
         initComponents();
     }
@@ -28,15 +31,15 @@ public class changeMeetingInfoJFrame extends JFrame {
         mainLabel = new JLabel();
         themeLabel = new JLabel();
         label3 = new JLabel();
-        themeField = new JTextField();
-        meetingTimeField = new JTextField();
+        themeField = new MyJTextField();
+        meetingTimeField = new MyJTextField();
         roomBox = new JComboBox();
         label4 = new JLabel();
         addLabel = new JLabel();
         deleteLabel = new JLabel();
-        deleteParticipateField = new JTextField();
-        addParticipateField = new JTextField();
-        finishButton = new JButton();
+        deleteParticipateField = new MyJTextField();
+        addParticipateField = new MyJTextField();
+        finishButton = new FocusButton();
 
         //======== this ========
         setTitle("\u66f4\u6539\u4f1a\u8bae\u4fe1\u606f/change meeting infomation");

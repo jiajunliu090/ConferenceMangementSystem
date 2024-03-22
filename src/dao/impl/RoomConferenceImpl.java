@@ -3,6 +3,7 @@ package dao.impl;
 import dao.RoomConferenceDAO;
 import model.Conference;
 import model.ConferenceRoom;
+import utilities.ConfigHelper;
 import utilities.DateTimeUtils;
 import utilities.JDBCUtil;
 
@@ -60,9 +61,10 @@ public class RoomConferenceImpl implements RoomConferenceDAO {
             preparedStatement.setString(1, room_ID);
             preparedStatement.setString(2, meeting_ID);
             preparedStatement.setString(3, DateTimeUtils.toDbDateTime(meetingTime));
+            ConfigHelper.getInstance().getRoomDAO().occupyRoom(room_ID);
             int affectRow = preparedStatement.executeUpdate();
             System.out.println("关联会议和会议室：影响行数：" + affectRow);
-            return true;
+            return affectRow == 1;
         }catch (Exception e) {
             e.printStackTrace();
         }finally {

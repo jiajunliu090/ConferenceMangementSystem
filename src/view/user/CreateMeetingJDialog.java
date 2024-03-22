@@ -1,5 +1,7 @@
 package view.user;
 
+import view.element.FocusButton;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -8,7 +10,7 @@ public class CreateMeetingJDialog extends JDialog {
     private JLabel label1;
     private JLabel label2;
     private JLabel label3;
-    private JButton finishButton;
+    private FocusButton finishButton;
     public CreateMeetingJDialog(Window owner) {
         super(owner);
         initComponents();
@@ -21,7 +23,7 @@ public class CreateMeetingJDialog extends JDialog {
         label1 = new JLabel();
         label2 = new JLabel();
         label3 = new JLabel();
-        finishButton = new JButton();
+        finishButton = new FocusButton();
 
         //======== this ========
         setTitle("会议创建成功/create successful");

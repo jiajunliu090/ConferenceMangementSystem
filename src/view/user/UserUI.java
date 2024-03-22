@@ -14,6 +14,7 @@ import java.io.InputStream;
 import java.sql.PreparedStatement;
 import java.time.LocalDateTime;
 import java.util.Arrays;
+import java.util.List;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.border.LineBorder;
@@ -363,14 +364,24 @@ public class UserUI extends JFrame {
                     createMeetingButton.setText("创建/create");
                     createMeetingButton.setBackground(Color.lightGray);
                     createMeetingButton.setForeground(new Color(0x333333));
-                    createMeetingButton.addActionListener(new AbstractAction() {
+                    createMeetingButton.addActionListener(new AbstractAction() { // 创建会议
                         @Override
                         public void actionPerformed(ActionEvent e) {
                             // 创建会议按钮
                             // 创建成功弹出对话框
-                            if (userService.createConference(meeting_IDField.getText(),
-                                    Arrays.stream(participantsField.getText().split("，")).toList(),
-                                    DateTimeUtils.fromUserInput(meetingTimeField.getText()))) {
+                            String meeting_id = meeting_IDField.getText();
+                            String participants = participantsField.getText();
+                            String meeting_time = meetingTimeField.getText();
+                            List<String> participants_name = Arrays.stream(participants.split("，")).toList();
+                            //System.out.println("meeting_id : " + meeting_id);
+                            //System.out.println("participants : " + participants);
+                            //System.out.println("meeting_time : " + meeting_time);
+                            //System.out.println(participants_name);
+                            //System.out.println("format_time : " + DateTimeUtils.fromUserInput(meeting_time));
+                            // 先创建会议
+                            if (userService.createConference(meeting_id, participants_name, DateTimeUtils.fromUserInput(meeting_time))) {
+                                System.out.println("创建成功");
+                                // 弹出成功画面
                                 CreateMeetingJDialog createMeetingJDialog = new CreateMeetingJDialog(UserUI.this);
                                 createMeetingJDialog.setVisible(true);
                             }

@@ -31,4 +31,5 @@ public interface UserDAO {
     String getU_password(String user_ID);
     // 用户名与密码符合
     boolean isCorrect(String user_ID, String password);
+    List<User> getUserByUser_ID(List<String> user_ids);
 }

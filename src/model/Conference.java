@@ -29,6 +29,7 @@ public class Conference {
         this.meetingTime = meetingTime;
         this.theme = theme;
     }
+
     // 用于从数据库创建会议实例
     public Conference(String meeting_ID, String creator_ID, List<User> participators, LocalDateTime meetingTime, String theme, String summary) {
         this.meeting_ID = meeting_ID;

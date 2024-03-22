@@ -1,5 +1,8 @@
 package view.user;
 
+import view.element.FocusButton;
+import view.element.MyJTextField;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -7,8 +10,8 @@ public class LogOutJDialog extends JDialog {
     private JPanel panel1;
     private JLabel label1;
     private JLabel label2;
-    private JTextField textField1;
-    private JButton button1;
+    private MyJTextField textField1;
+    private FocusButton button1;
 
     public LogOutJDialog(Window owner) {
         super(owner);
@@ -21,8 +24,8 @@ public class LogOutJDialog extends JDialog {
         panel1 = new JPanel();
         label1 = new JLabel();
         label2 = new JLabel();
-        textField1 = new JTextField();
-        button1 = new JButton();
+        textField1 = new MyJTextField();
+        button1 = new FocusButton();
 
         //======== this ========
         setTitle("\u6ce8\u9500\u7528\u6237");

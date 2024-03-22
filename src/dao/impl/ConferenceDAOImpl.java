@@ -43,6 +43,7 @@ public class ConferenceDAOImpl implements ConferenceDAO {
             ConfigHelper.getInstance().getRoomConferenceDAO().addMeetingToRoom(conferenceToAdd.getMeeting_ID(), room_ID,
                     conferenceToAdd.getMeetingTime());
             System.out.println("会议创建完成");
+            return affectRow == 1;
         }catch (Exception e) {
             e.printStackTrace();
         }finally {

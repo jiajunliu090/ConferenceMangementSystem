@@ -1,5 +1,7 @@
 package view.user;
 
+import view.element.FocusButton;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -8,7 +10,7 @@ public class WriteCommentJFrame extends JFrame {
     private JScrollPane scrollPane1;
     private JTextArea textArea1;
     private JLabel label1;
-    private JButton button1;
+    private FocusButton button1;
     public WriteCommentJFrame() {
         initComponents();
     }
@@ -18,7 +20,7 @@ public class WriteCommentJFrame extends JFrame {
         scrollPane1 = new JScrollPane();
         textArea1 = new JTextArea();
         label1 = new JLabel();
-        button1 = new JButton();
+        button1 = new FocusButton();
 
         //======== this ========
         setTitle("\u4f1a\u8bae");

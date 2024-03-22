@@ -177,6 +177,26 @@ public class RoomDAOImpl implements RoomDAO {
         return false;
     }
 
+    @Override
+    public boolean occupyRoom(String room_ID) {
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        String sql = "UPDATE conference_management.room_info SET isOccupied = 'Yes' WHERE room_ID = ?";
+        try {
+            connection = JDBCUtil.getConnection();
+            preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, room_ID);
+            int affectRow = preparedStatement.executeUpdate();
+            System.out.println("占用房间：影响行数：" + affectRow);
+            return affectRow == 1;
+        }catch (Exception e) {
+            e.printStackTrace();
+        }finally {
+            JDBCUtil.closeConnection(preparedStatement, connection);
+        }
+        return false;
+    }
+
     public static void main(String[] args) {
         RoomDAO roomDAO = new RoomDAOImpl();
         System.out.println(roomDAO.isAvailable("1111101H"));

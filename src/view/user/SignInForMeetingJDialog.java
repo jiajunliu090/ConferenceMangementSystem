@@ -3,6 +3,8 @@ package view.user;
 import model.Captcha;
 import service.UserService;
 import utilities.CaptchaGenerator;
+import view.element.FocusButton;
+import view.element.MyJTextField;
 
 import javax.swing.*;
 import java.awt.*;
@@ -12,8 +14,8 @@ public class SignInForMeetingJDialog extends JDialog {
     private JPanel panel1;
     private JLabel signInLabel;
     private JLabel signInIcon;
-    private JTextField codeField;
-    private JButton submitButton;
+    private MyJTextField codeField;
+    private FocusButton submitButton;
     private Captcha captcha;
     private UserService userService;
     private String meeting_ID;
@@ -28,8 +30,8 @@ public class SignInForMeetingJDialog extends JDialog {
         panel1 = new JPanel();
         signInLabel = new JLabel();
         signInIcon = new JLabel();
-        codeField = new JTextField();
-        submitButton = new JButton();
+        codeField = new MyJTextField();
+        submitButton = new FocusButton();
         captcha = CaptchaGenerator.generateCaptcha();
         //======== this ========
         setTitle("\u4f1a\u8bae\u7b7e\u5230");

@@ -218,6 +218,7 @@ public class UserConferenceDAOImpl implements UserConferenceDAO {
 
     @Override
     public boolean connectUserAndConference(List<String> user_IDs, String meeting_ID) {
+        System.out.println("关联用户和会议");
         Connection connection = null;
         PreparedStatement preparedStatement = null;
         String sql = "INSERT INTO user_conference (user_ID, meeting_ID) VALUES (?, ?);";

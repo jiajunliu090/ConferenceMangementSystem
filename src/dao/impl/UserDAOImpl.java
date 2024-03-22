@@ -285,6 +285,48 @@ public class UserDAOImpl implements UserDAO {
         return false;
     }
 
+    @Override
+    public List<User> getUserByUser_ID(List<String> user_ids) {
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+        String sql = "SELECT * FROM user_info WHERE user_ID = ?";
+        List<User> userList = new ArrayList<>();
+
+        try {
+            connection = JDBCUtil.getConnection();
+
+            for (String user_id : user_ids) {
+                preparedStatement = connection.prepareStatement(sql);
+                preparedStatement.setString(1, user_id);
+                resultSet = preparedStatement.executeQuery();
+
+                while (resultSet.next()) {
+                    String user_ID = resultSet.getString("user_ID");
+                    String uPassword = resultSet.getString("u_password");
+                    String name = resultSet.getString("name");
+                    String meetingName = resultSet.getString("meetingName");
+                    String position = resultSet.getString("position");
+                    String gender = resultSet.getString("gender");
+
+                    User user = new User(user_ID, uPassword, name, meetingName, position, gender);
+                    userList.add(user);
+                }
+
+                // 关闭 ResultSet 和 PreparedStatement
+                resultSet.close();
+                preparedStatement.close();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            JDBCUtil.closeConnection(resultSet, preparedStatement, connection);
+        }
+
+        return userList;
+    }
+
+
     public static void main(String[] args) {
         UserDAO userDAO = new UserDAOImpl();
         //System.out.println(userDAO.getAllUsers());
