@@ -5,8 +5,10 @@ import service.UserService;
 import service.impl.AdminServiceImpl;
 import service.impl.UserServiceImpl;
 import view.admin.AdminUI;
+import view.element.FocusButton;
+import view.element.FocusableBorderPasswordField;
+import view.element.FocusableBorderTextField;
 import view.user.UserUI;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -45,9 +47,9 @@ public class Login extends JFrame {
         root.add(jLabel2);
         root.add(jLabel3);
         //
-        JButton managerLogin = new JButton("管理员登录");
-        JButton userLogin = new JButton("用户登录");
-        JButton Sign = new JButton("注册");
+        FocusButton managerLogin = new FocusButton("管理员登录");
+        FocusButton userLogin = new FocusButton("用户登录");
+        FocusButton Sign = new FocusButton("注册");
         root.add(managerLogin);
         root.add(userLogin);
         root.add(Sign);

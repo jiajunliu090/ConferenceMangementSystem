@@ -1,14 +1,26 @@
 package view.user;
 
+import model.User;
 import service.UserService;
 import service.impl.UserServiceImpl;
+import utilities.DateTimeUtils;
+import view.element.FocusButton;
+import view.element.MyJTextField;
 
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.image.BufferedImage;
+import java.io.InputStream;
+import java.sql.PreparedStatement;
+import java.time.LocalDateTime;
+import java.util.Arrays;
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.border.LineBorder;
 
 public class UserUI extends JFrame {
     UserService userService;
+    User loginUser;
     private JTabbedPane tabbedPane1;
     private JPanel StartPanel;
     private JPanel panel3;
@@ -20,7 +32,7 @@ public class UserUI extends JFrame {
     private JLabel positionLabel2;
     private JLabel timeLabel;
     private JLabel TimeLabel2;
-    private JTextField searchField;
+    private MyJTextField searchField;
     private JLabel searchIcon;
     private JLabel searchLabel;
     private JPanel panel4;
@@ -32,20 +44,21 @@ public class UserUI extends JFrame {
     private JPanel CMPanel;
     private JPanel panel5;
     private JLabel createMeetingLabel;
-    private JTextField meeting_IDField;
+    private MyJTextField meeting_IDField;
     private JLabel meeting_IDLabel;
     private JLabel participantsLabel;
     private JLabel meetingTimeLabel;
-    private JTextField participantsField;
-    private JTextField meetingTimeField;
-    private JButton createMeetingButton;
+    private MyJTextField participantsField;
+    private MyJTextField meetingTimeField;
+    private FocusButton createMeetingButton;
     private JPanel panel6;
     private JScrollPane scrollPane2;
     private JTable conferenceTable2;
     private JLabel conferenceLabel2;
-    private JButton signInButton;
-    private JButton removeButton;
-    private JButton updateMeetingButton;
+    private FocusButton signInButton;
+    private FocusButton removeButton;
+    private FocusButton updateMeetingButton;
+    private FocusButton writeCommentButton;
     private JPanel User_infoPanel;
     private JPanel userInfoPanel;
     private JLabel titleLabel;
@@ -54,19 +67,20 @@ public class UserUI extends JFrame {
     private JLabel infoPositionLabel;
     private JLabel user_IDLabel;
     private JLabel infoPasswordLabel;
-    private JTextField infoNameField;
-    private JTextField infoMeetingNameField;
-    private JTextField infoPositionField;
-    private JTextField infoPasswordField;
+    private MyJTextField infoNameField;
+    private MyJTextField infoMeetingNameField;
+    private MyJTextField infoPositionField;
+    private MyJTextField infoPasswordField;
     private JLabel user_IDLabel2;
     private JLabel infoGenderLabel;
     private JRadioButton maleRadioButton;
     private JRadioButton femaleRadioButton;
-    private JButton logOutAccount;
-    private JButton infoUpdateButton;
+    private FocusButton logOutAccount;
+    private FocusButton infoUpdateButton;
 
     public UserUI(UserService userService) {
         this.userService = userService;
+        loginUser = userService.getLoginUser();
         tabbedPane1 = new JTabbedPane();
         StartPanel = new JPanel();
         panel3 = new JPanel();
@@ -78,7 +92,7 @@ public class UserUI extends JFrame {
         positionLabel2 = new JLabel();
         timeLabel = new JLabel();
         TimeLabel2 = new JLabel();
-        searchField = new JTextField();
+        searchField = new MyJTextField();
         searchIcon = new JLabel();
         searchLabel = new JLabel();
         panel4 = new JPanel();
@@ -90,20 +104,21 @@ public class UserUI extends JFrame {
         CMPanel = new JPanel();
         panel5 = new JPanel();
         createMeetingLabel = new JLabel();
-        meeting_IDField = new JTextField();
+        meeting_IDField = new MyJTextField();
         meeting_IDLabel = new JLabel();
         participantsLabel = new JLabel();
         meetingTimeLabel = new JLabel();
-        participantsField = new JTextField();
-        meetingTimeField = new JTextField();
-        createMeetingButton = new JButton();
+        participantsField = new MyJTextField();
+        meetingTimeField = new MyJTextField();
+        createMeetingButton = new FocusButton();
         panel6 = new JPanel();
         scrollPane2 = new JScrollPane();
         conferenceTable2 = new JTable();
         conferenceLabel2 = new JLabel();
-        signInButton = new JButton();
-        removeButton = new JButton();
-        updateMeetingButton = new JButton();
+        signInButton = new FocusButton();
+        removeButton = new FocusButton();
+        updateMeetingButton = new FocusButton();
+        writeCommentButton = new FocusButton();
         User_infoPanel = new JPanel();
         userInfoPanel = new JPanel();
         titleLabel = new JLabel();
@@ -112,17 +127,24 @@ public class UserUI extends JFrame {
         infoPositionLabel = new JLabel();
         user_IDLabel = new JLabel();
         infoPasswordLabel = new JLabel();
-        infoNameField = new JTextField();
-        infoMeetingNameField = new JTextField();
-        infoPositionField = new JTextField();
-        infoPasswordField = new JTextField();
+        infoNameField = new MyJTextField();
+        infoMeetingNameField = new MyJTextField();
+        infoPositionField = new MyJTextField();
+        infoPasswordField = new MyJTextField();
         user_IDLabel2 = new JLabel();
         infoGenderLabel = new JLabel();
         maleRadioButton = new JRadioButton();
         femaleRadioButton = new JRadioButton();
-        logOutAccount = new JButton();
-        infoUpdateButton = new JButton();
-
+        logOutAccount = new FocusButton();
+        infoUpdateButton = new FocusButton();
+        // 加载图片
+        try {
+            InputStream stream = UserUI.class.getResourceAsStream("/resources/image/icons8-search-36(1).png");
+            BufferedImage image = ImageIO.read(stream);
+            searchIcon.setIcon(new ImageIcon(image));
+        }catch (Exception e) {
+            e.printStackTrace();
+        }
         //======== this ========
         setTitle("会议管理系统");
         var contentPane = getContentPane();
@@ -169,19 +191,19 @@ public class UserUI extends JFrame {
                     positionLabel.setBounds(60, 120, 170, 30);
 
                     //---- nameLabel2 ----
-                    nameLabel2.setText(userService.getLoginUser().getName());
+                    nameLabel2.setText(loginUser.getName());
                     nameLabel2.setForeground(Color.lightGray);
                     panel3.add(nameLabel2);
                     nameLabel2.setBounds(255, 30, 75, 30);
 
                     //---- meetingNameLabel2 ----
-                    meetingNameLabel2.setText(userService.getLoginUser().getMeetingName());
+                    meetingNameLabel2.setText(loginUser.getMeetingName());
                     meetingNameLabel2.setForeground(Color.lightGray);
                     panel3.add(meetingNameLabel2);
                     meetingNameLabel2.setBounds(255, 75, 75, 30);
 
                     //---- positionLabel2 ----
-                    positionLabel2.setText(userService.getLoginUser().getPosition());
+                    positionLabel2.setText(loginUser.getPosition());
                     positionLabel2.setForeground(Color.lightGray);
                     panel3.add(positionLabel2);
                     positionLabel2.setBounds(255, 120, 75, 30);
@@ -193,7 +215,7 @@ public class UserUI extends JFrame {
                     timeLabel.setBounds(375, 15, 165, 30);
 
                     //---- TimeLabel2 ----
-                    TimeLabel2.setText("text");
+                    TimeLabel2.setText(DateTimeUtils.toUserInput(LocalDateTime.now()));
                     TimeLabel2.setForeground(Color.lightGray);
                     panel3.add(TimeLabel2);
                     TimeLabel2.setBounds(590, 15, 75, 30);
@@ -201,7 +223,6 @@ public class UserUI extends JFrame {
                     searchField.setBounds(375, 105, 225, 50);
 
                     //---- searchIcon ----
-                    searchIcon.setIcon(new ImageIcon(String.valueOf(UserUI.class.getResourceAsStream("/resources/image/icons8-search-36(1).png"))));
                     panel3.add(searchIcon);
                     searchIcon.setBounds(605, 110, 40, 40);
 
@@ -259,7 +280,7 @@ public class UserUI extends JFrame {
                     startUser_IDLabel.setBounds(0, 240, 105, 40);
 
                     //---- startUser_IDLabel2 ----
-                    startUser_IDLabel2.setText("text");
+                    startUser_IDLabel2.setText(loginUser.getUser_ID());
                     startUser_IDLabel2.setForeground(new Color(0x333333));
                     panel4.add(startUser_IDLabel2);
                     startUser_IDLabel2.setBounds(125, 240, 90, 40);
@@ -342,6 +363,19 @@ public class UserUI extends JFrame {
                     createMeetingButton.setText("创建/create");
                     createMeetingButton.setBackground(Color.lightGray);
                     createMeetingButton.setForeground(new Color(0x333333));
+                    createMeetingButton.addActionListener(new AbstractAction() {
+                        @Override
+                        public void actionPerformed(ActionEvent e) {
+                            // 创建会议按钮
+                            // 创建成功弹出对话框
+                            if (userService.createConference(meeting_IDField.getText(),
+                                    Arrays.stream(participantsField.getText().split("，")).toList(),
+                                    DateTimeUtils.fromUserInput(meetingTimeField.getText()))) {
+                                CreateMeetingJDialog createMeetingJDialog = new CreateMeetingJDialog(UserUI.this);
+                                createMeetingJDialog.setVisible(true);
+                            }
+                        }
+                    });
                     panel5.add(createMeetingButton);
                     createMeetingButton.setBounds(300, 155, 121, createMeetingButton.getPreferredSize().height);
 
@@ -390,6 +424,18 @@ public class UserUI extends JFrame {
                     signInButton.setText("签到");
                     signInButton.setBackground(new Color(0x666666));
                     signInButton.setForeground(Color.lightGray);
+                    signInButton.addActionListener(new AbstractAction() {
+                        @Override
+                        public void actionPerformed(ActionEvent e) {
+                            // 签到按钮
+                            // 弹出验证界面
+                            SignInForMeetingJDialog signInForMeetingJDialog = new SignInForMeetingJDialog(UserUI.this,
+                                    userService,
+                                    // 获得选中的会议IDconferenceTable2.getValueAt(conferenceTable2.getSelectedRow(), 0).toString()
+                                    "muggleee");
+                            signInForMeetingJDialog.setVisible(true);
+                        }
+                    });
                     panel6.add(signInButton);
                     signInButton.setBounds(560, 50, 120, 40);
 
@@ -397,6 +443,12 @@ public class UserUI extends JFrame {
                     removeButton.setText("从列表中移除");
                     removeButton.setBackground(new Color(0x666666));
                     removeButton.setForeground(Color.lightGray);
+                    removeButton.addActionListener(new AbstractAction() {
+                        @Override
+                        public void actionPerformed(ActionEvent e) {
+                            // 移除队列按钮
+                        }
+                    });
                     panel6.add(removeButton);
                     removeButton.setBounds(560, 105, 120, 40);
 
@@ -404,8 +456,30 @@ public class UserUI extends JFrame {
                     updateMeetingButton.setText("更改会议信息");
                     updateMeetingButton.setBackground(new Color(0x666666));
                     updateMeetingButton.setForeground(Color.lightGray);
+                    updateMeetingButton.addActionListener(new AbstractAction() {
+                        @Override
+                        public void actionPerformed(ActionEvent e) {
+                            // 更新会议信息
+                            // 弹出更新界面
+
+                        }
+                    });
                     panel6.add(updateMeetingButton);
                     updateMeetingButton.setBounds(560, 160, 120, 40);
+
+                    //---- writeCommentButton ----
+                    writeCommentButton.setText("\u5199\u8bc4\u8bba");
+                    writeCommentButton.setBackground(new Color(0x666666));
+                    writeCommentButton.setForeground(Color.lightGray);
+                    writeCommentButton.addActionListener(new AbstractAction() {
+                        @Override
+                        public void actionPerformed(ActionEvent e) {
+                            // 写评论
+                            // 弹出写评论界面
+                        }
+                    });
+                    panel6.add(writeCommentButton);
+                    writeCommentButton.setBounds(560, 215, 120, 40);
 
                     {
                         // compute preferred size
@@ -452,36 +526,36 @@ public class UserUI extends JFrame {
                     userInfoPanel.setLayout(null);
 
                     //---- titleLabel ----
-                    titleLabel.setText("个人信息/profile");
+                    titleLabel.setText("\u4e2a\u4eba\u4fe1\u606f/profile");
                     userInfoPanel.add(titleLabel);
                     titleLabel.setBounds(325, 10, 100, 50);
 
                     //---- infoNameLabel ----
-                    infoNameLabel.setText("姓名/Name");
+                    infoNameLabel.setText("\u59d3\u540d/Name");
                     infoNameLabel.setForeground(Color.darkGray);
                     userInfoPanel.add(infoNameLabel);
                     infoNameLabel.setBounds(130, 70, 150, 25);
 
                     //---- infoMeeingNameLabel ----
-                    infoMeeingNameLabel.setText("参会名/Meeting Name");
+                    infoMeeingNameLabel.setText("\u53c2\u4f1a\u540d/Meeting Name");
                     infoMeeingNameLabel.setForeground(Color.darkGray);
                     userInfoPanel.add(infoMeeingNameLabel);
                     infoMeeingNameLabel.setBounds(130, 140, 155, 25);
 
                     //---- infoPositionLabel ----
                     infoPositionLabel.setForeground(Color.darkGray);
-                    infoPositionLabel.setText("职位/position");
+                    infoPositionLabel.setText("\u804c\u4f4d/position");
                     userInfoPanel.add(infoPositionLabel);
                     infoPositionLabel.setBounds(130, 210, 155, 25);
 
                     //---- user_IDLabel ----
-                    user_IDLabel.setText("用户ID/user_ID:");
+                    user_IDLabel.setText("\u7528\u6237ID/user_ID\uff1a");
                     user_IDLabel.setForeground(Color.darkGray);
                     userInfoPanel.add(user_IDLabel);
                     user_IDLabel.setBounds(0, 0, 105, 45);
 
                     //---- infoPasswordLabel ----
-                    infoPasswordLabel.setText("密码/password");
+                    infoPasswordLabel.setText("\u5bc6\u7801/password");
                     infoPasswordLabel.setForeground(Color.darkGray);
                     userInfoPanel.add(infoPasswordLabel);
                     infoPasswordLabel.setBounds(130, 285, 155, 25);
@@ -495,25 +569,25 @@ public class UserUI extends JFrame {
                     infoPasswordField.setBounds(180, 320, 180, infoPasswordField.getPreferredSize().height);
 
                     //---- user_IDLabel2 ----
-                    user_IDLabel2.setForeground(Color.darkGray);
+                    user_IDLabel2.setForeground(Color.white);
                     user_IDLabel2.setText("text");
                     userInfoPanel.add(user_IDLabel2);
                     user_IDLabel2.setBounds(130, 10, 150, 25);
 
                     //---- infoGenderLabel ----
-                    infoGenderLabel.setText("性别/gender");
+                    infoGenderLabel.setText("\u6027\u522b/gender");
                     infoGenderLabel.setForeground(Color.darkGray);
                     userInfoPanel.add(infoGenderLabel);
                     infoGenderLabel.setBounds(430, 70, 150, 25);
 
                     //---- maleRadioButton ----
-                    maleRadioButton.setText("男/male");
+                    maleRadioButton.setText("\u7537/male");
                     maleRadioButton.setForeground(Color.darkGray);
                     userInfoPanel.add(maleRadioButton);
                     maleRadioButton.setBounds(465, 105, maleRadioButton.getPreferredSize().width, 25);
 
                     //---- femaleRadioButton ----
-                    femaleRadioButton.setText("女/female");
+                    femaleRadioButton.setText("\u5973/female");
                     femaleRadioButton.setForeground(Color.darkGray);
                     userInfoPanel.add(femaleRadioButton);
                     femaleRadioButton.setBounds(550, 105, femaleRadioButton.getPreferredSize().width, 25);
@@ -521,11 +595,18 @@ public class UserUI extends JFrame {
                     //---- logOutAccount ----
                     logOutAccount.setText("注销账号/log out account");
                     logOutAccount.setForeground(Color.red);
+                    logOutAccount.addActionListener(new AbstractAction() {
+                        @Override
+                        public void actionPerformed(ActionEvent e) {
+                            // 注销用户按钮
+
+                        }
+                    });
                     userInfoPanel.add(logOutAccount);
                     logOutAccount.setBounds(540, 430, 205, 35);
 
                     //---- infoUpdateButton ----
-                    infoUpdateButton.setText("提交");
+                    infoUpdateButton.setText("\u63d0\u4ea4");
                     infoUpdateButton.setForeground(Color.darkGray);
                     userInfoPanel.add(infoUpdateButton);
                     infoUpdateButton.setBounds(335, 380, infoUpdateButton.getPreferredSize().width, 35);

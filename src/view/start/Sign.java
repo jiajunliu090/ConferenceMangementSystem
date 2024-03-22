@@ -2,6 +2,9 @@ package view.start;
 
 import service.UserService;
 import service.impl.UserServiceImpl;
+import view.element.FocusButton;
+import view.element.FocusableBorderPasswordField;
+import view.element.FocusableBorderTextField;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -14,7 +17,7 @@ public class Sign extends JFrame {
     JTextField nameField = new FocusableBorderTextField(20);
     //将复选框加入容器
     JCheckBox agreeField = new JCheckBox("同意用户协议");
-    JButton nextButton = new JButton("下一步");
+    FocusButton nextButton = new FocusButton("下一步");
     UserService userService = new UserServiceImpl();
 
     {

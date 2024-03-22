@@ -266,6 +266,5 @@ public class AdminUI extends JFrame {
         }
         pack();
         setLocationRelativeTo(getOwner());
-        // JFormDesigner - End of component initialization  //GEN-END:initComponents  @formatter:on
     }
 }

@@ -1,4 +1,4 @@
-package view.start;
+package view.element;
 
 import javax.swing.*;
 import javax.swing.border.Border;
@@ -6,7 +6,7 @@ import java.awt.*;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 
-class FocusableBorderTextField extends JTextField {
+public class FocusableBorderTextField extends JTextField {
     JTextField jTextField = new JTextField();
     Border border = jTextField.getBorder();
 
