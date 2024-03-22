@@ -124,7 +124,7 @@ public class UserUI extends JFrame {
         infoUpdateButton = new JButton();
 
         //======== this ========
-        setTitle("\u4f1a\u8bae\u7ba1\u7406\u7cfb\u7edf");
+        setTitle("会议管理系统");
         var contentPane = getContentPane();
         contentPane.setLayout(null);
 
@@ -151,19 +151,19 @@ public class UserUI extends JFrame {
                     panel3.setLayout(null);
 
                     //---- nameLabel ----
-                    nameLabel.setText("\u59d3\u540d/Name\uff1a");
+                    nameLabel.setText("姓名/Name:");
                     nameLabel.setForeground(Color.lightGray);
                     panel3.add(nameLabel);
                     nameLabel.setBounds(60, 30, 100, 30);
 
                     //---- meetingNameLabel ----
-                    meetingNameLabel.setText("\u4f1a\u8bae\u59d3\u540d/Meeting Name\uff1a");
+                    meetingNameLabel.setText("会议姓名/Meeting Name:");
                     meetingNameLabel.setForeground(Color.lightGray);
                     panel3.add(meetingNameLabel);
                     meetingNameLabel.setBounds(60, 75, 170, 30);
 
                     //---- positionLabel ----
-                    positionLabel.setText("\u804c\u4f4d/position\uff1a");
+                    positionLabel.setText("职位/position");
                     positionLabel.setForeground(Color.lightGray);
                     panel3.add(positionLabel);
                     positionLabel.setBounds(60, 120, 170, 30);
@@ -187,7 +187,7 @@ public class UserUI extends JFrame {
                     positionLabel2.setBounds(255, 120, 75, 30);
 
                     //---- timeLabel ----
-                    timeLabel.setText("\u5f53\u524d\u65f6\u95f4/Current Time\uff1a");
+                    timeLabel.setText("当前时间/Current Time:");
                     timeLabel.setForeground(Color.lightGray);
                     panel3.add(timeLabel);
                     timeLabel.setBounds(375, 15, 165, 30);
@@ -206,7 +206,7 @@ public class UserUI extends JFrame {
                     searchIcon.setBounds(605, 110, 40, 40);
 
                     //---- searchLabel ----
-                    searchLabel.setText("\u8f93\u5165\u4f1a\u8baeID\u641c\u7d22/input meeting_ID do search\uff1a");
+                    searchLabel.setText("输入会议ID搜索/input meeting_ID do search");
                     searchLabel.setForeground(Color.lightGray);
                     panel3.add(searchLabel);
                     searchLabel.setBounds(375, 55, 315, 45);
@@ -235,7 +235,7 @@ public class UserUI extends JFrame {
                     panel4.setLayout(null);
 
                     //---- conferenceLabel ----
-                    conferenceLabel.setText("\u5373\u5c06\u53c2\u52a0\u7684\u4f1a\u8bae/upcoming meeting\uff1a");
+                    conferenceLabel.setText("即将参加的会议/upcoming meeting:");
                     conferenceLabel.setForeground(new Color(0x333333));
                     panel4.add(conferenceLabel);
                     conferenceLabel.setBounds(60, 10, 240, 40);
@@ -253,7 +253,7 @@ public class UserUI extends JFrame {
                     scrollPane1.setBounds(375, 0, 375, 280);
 
                     //---- startUser_IDLabel ----
-                    startUser_IDLabel.setText("\u7528\u6237ID/user_ID\uff1a");
+                    startUser_IDLabel.setText("用户ID/user_ID:");
                     startUser_IDLabel.setForeground(new Color(0x333333));
                     panel4.add(startUser_IDLabel);
                     startUser_IDLabel.setBounds(0, 240, 105, 40);
@@ -297,7 +297,7 @@ public class UserUI extends JFrame {
                     StartPanel.setPreferredSize(preferredSize);
                 }
             }
-            tabbedPane1.addTab("\u4e3b\u9875", StartPanel);
+            tabbedPane1.addTab("主页", StartPanel);
 
             //======== CMPanel ========
             {
@@ -309,7 +309,7 @@ public class UserUI extends JFrame {
                     panel5.setLayout(null);
 
                     //---- createMeetingLabel ----
-                    createMeetingLabel.setText("\u521b\u5efa\u4f1a\u8bae/create meeting\uff1a");
+                    createMeetingLabel.setText("创建会议/create meeting:");
                     createMeetingLabel.setForeground(Color.lightGray);
                     panel5.add(createMeetingLabel);
                     createMeetingLabel.setBounds(30, 20, 170, 30);
@@ -317,19 +317,19 @@ public class UserUI extends JFrame {
                     meeting_IDField.setBounds(505, 20, 150, 30);
 
                     //---- meeting_IDLabel ----
-                    meeting_IDLabel.setText("\u4f1a\u8baeID/meeting_ID\uff1a");
+                    meeting_IDLabel.setText("会议ID/meeting_ID:");
                     meeting_IDLabel.setForeground(Color.lightGray);
                     panel5.add(meeting_IDLabel);
                     meeting_IDLabel.setBounds(215, 20, 150, 30);
 
                     //---- participantsLabel ----
-                    participantsLabel.setText("\u53c2\u52a0\u4eba\u5458/participants(\u59d3\u540d)\uff1a");
+                    participantsLabel.setText("参加人员/participants(姓名)");
                     participantsLabel.setForeground(Color.lightGray);
                     panel5.add(participantsLabel);
                     participantsLabel.setBounds(215, 65, 185, 30);
 
                     //---- meetingTimeLabel ----
-                    meetingTimeLabel.setText("\u65f6\u95f4/Time(\u9700\u8981\u683c\u5f0f\u4e3a: MM.dd.HH.mm) \uff1a");
+                    meetingTimeLabel.setText("时间/Time(需要格式为: MM.dd.HH.mm): ");
                     meetingTimeLabel.setForeground(Color.lightGray);
                     panel5.add(meetingTimeLabel);
                     meetingTimeLabel.setBounds(215, 110, 265, 30);
@@ -339,7 +339,7 @@ public class UserUI extends JFrame {
                     meetingTimeField.setBounds(505, 110, 150, 30);
 
                     //---- createMeetingButton ----
-                    createMeetingButton.setText("\u521b\u5efa/create");
+                    createMeetingButton.setText("创建/create");
                     createMeetingButton.setBackground(Color.lightGray);
                     createMeetingButton.setForeground(new Color(0x333333));
                     panel5.add(createMeetingButton);
@@ -381,27 +381,27 @@ public class UserUI extends JFrame {
                     scrollPane2.setBounds(0, 0, 515, 280);
 
                     //---- conferenceLabel2 ----
-                    conferenceLabel2.setText("\u5728\u8868\u683c\u4e2d\u9009\u4e2d\u4f1a\u8bae\u8fdb\u884c\u64cd\u4f5c\uff1a");
+                    conferenceLabel2.setText("在表格中选中会议进行操作:");
                     conferenceLabel2.setForeground(new Color(0x333333));
                     panel6.add(conferenceLabel2);
                     conferenceLabel2.setBounds(515, 5, 230, 40);
 
                     //---- signInButton ----
-                    signInButton.setText("\u7b7e\u5230");
+                    signInButton.setText("签到");
                     signInButton.setBackground(new Color(0x666666));
                     signInButton.setForeground(Color.lightGray);
                     panel6.add(signInButton);
                     signInButton.setBounds(560, 50, 120, 40);
 
                     //---- removeButton ----
-                    removeButton.setText("\u4ece\u5217\u8868\u4e2d\u79fb\u9664");
+                    removeButton.setText("从列表中移除");
                     removeButton.setBackground(new Color(0x666666));
                     removeButton.setForeground(Color.lightGray);
                     panel6.add(removeButton);
                     removeButton.setBounds(560, 105, 120, 40);
 
                     //---- updateMeetingButton ----
-                    updateMeetingButton.setText("\u66f4\u6539\u4f1a\u8bae\u4fe1\u606f");
+                    updateMeetingButton.setText("更改会议信息");
                     updateMeetingButton.setBackground(new Color(0x666666));
                     updateMeetingButton.setForeground(Color.lightGray);
                     panel6.add(updateMeetingButton);
@@ -440,7 +440,7 @@ public class UserUI extends JFrame {
                     CMPanel.setPreferredSize(preferredSize);
                 }
             }
-            tabbedPane1.addTab("\u4f1a\u8bae\u7ba1\u7406", CMPanel);
+            tabbedPane1.addTab("会议管理", CMPanel);
 
             //======== User_infoPanel ========
             {
@@ -452,36 +452,36 @@ public class UserUI extends JFrame {
                     userInfoPanel.setLayout(null);
 
                     //---- titleLabel ----
-                    titleLabel.setText("\u4e2a\u4eba\u4fe1\u606f/profile");
+                    titleLabel.setText("个人信息/profile");
                     userInfoPanel.add(titleLabel);
                     titleLabel.setBounds(325, 10, 100, 50);
 
                     //---- infoNameLabel ----
-                    infoNameLabel.setText("\u59d3\u540d/Name");
+                    infoNameLabel.setText("姓名/Name");
                     infoNameLabel.setForeground(Color.darkGray);
                     userInfoPanel.add(infoNameLabel);
                     infoNameLabel.setBounds(130, 70, 150, 25);
 
                     //---- infoMeeingNameLabel ----
-                    infoMeeingNameLabel.setText("\u53c2\u4f1a\u540d/Meeting Name");
+                    infoMeeingNameLabel.setText("参会名/Meeting Name");
                     infoMeeingNameLabel.setForeground(Color.darkGray);
                     userInfoPanel.add(infoMeeingNameLabel);
                     infoMeeingNameLabel.setBounds(130, 140, 155, 25);
 
                     //---- infoPositionLabel ----
                     infoPositionLabel.setForeground(Color.darkGray);
-                    infoPositionLabel.setText("\u804c\u4f4d/position");
+                    infoPositionLabel.setText("职位/position");
                     userInfoPanel.add(infoPositionLabel);
                     infoPositionLabel.setBounds(130, 210, 155, 25);
 
                     //---- user_IDLabel ----
-                    user_IDLabel.setText("\u7528\u6237ID/user_ID\uff1a");
+                    user_IDLabel.setText("用户ID/user_ID:");
                     user_IDLabel.setForeground(Color.darkGray);
                     userInfoPanel.add(user_IDLabel);
                     user_IDLabel.setBounds(0, 0, 105, 45);
 
                     //---- infoPasswordLabel ----
-                    infoPasswordLabel.setText("\u5bc6\u7801/password");
+                    infoPasswordLabel.setText("密码/password");
                     infoPasswordLabel.setForeground(Color.darkGray);
                     userInfoPanel.add(infoPasswordLabel);
                     infoPasswordLabel.setBounds(130, 285, 155, 25);
@@ -501,31 +501,31 @@ public class UserUI extends JFrame {
                     user_IDLabel2.setBounds(130, 10, 150, 25);
 
                     //---- infoGenderLabel ----
-                    infoGenderLabel.setText("\u6027\u522b/gender");
+                    infoGenderLabel.setText("性别/gender");
                     infoGenderLabel.setForeground(Color.darkGray);
                     userInfoPanel.add(infoGenderLabel);
                     infoGenderLabel.setBounds(430, 70, 150, 25);
 
                     //---- maleRadioButton ----
-                    maleRadioButton.setText("\u7537/male");
+                    maleRadioButton.setText("男/male");
                     maleRadioButton.setForeground(Color.darkGray);
                     userInfoPanel.add(maleRadioButton);
                     maleRadioButton.setBounds(465, 105, maleRadioButton.getPreferredSize().width, 25);
 
                     //---- femaleRadioButton ----
-                    femaleRadioButton.setText("\u5973/female");
+                    femaleRadioButton.setText("女/female");
                     femaleRadioButton.setForeground(Color.darkGray);
                     userInfoPanel.add(femaleRadioButton);
                     femaleRadioButton.setBounds(550, 105, femaleRadioButton.getPreferredSize().width, 25);
 
                     //---- logOutAccount ----
-                    logOutAccount.setText("\u6ce8\u9500\u8d26\u53f7/log out account");
+                    logOutAccount.setText("注销账号/log out account");
                     logOutAccount.setForeground(Color.red);
                     userInfoPanel.add(logOutAccount);
                     logOutAccount.setBounds(540, 430, 205, 35);
 
                     //---- infoUpdateButton ----
-                    infoUpdateButton.setText("\u63d0\u4ea4");
+                    infoUpdateButton.setText("提交");
                     infoUpdateButton.setForeground(Color.darkGray);
                     userInfoPanel.add(infoUpdateButton);
                     infoUpdateButton.setBounds(335, 380, infoUpdateButton.getPreferredSize().width, 35);
@@ -563,7 +563,7 @@ public class UserUI extends JFrame {
                     User_infoPanel.setPreferredSize(preferredSize);
                 }
             }
-            tabbedPane1.addTab("\u6211\u7684\u4fe1\u606f", User_infoPanel);
+            tabbedPane1.addTab("我的信息", User_infoPanel);
         }
         contentPane.add(tabbedPane1);
         tabbedPane1.setBounds(0, 0, 750, 500);
