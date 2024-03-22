@@ -22,7 +22,10 @@ public interface UserDAO {
     boolean updateUser(String user_id, String name, String meetingName, String position, String gender, String u_password);
     // 根据用户ID查询数据库创建一个用户实例
     // 查用户
+    // 通过用户姓名
     User newUserByDB_User_ID(String user_ID);
+    User newUserByName(String name);
+    List<String> getIDByName(List<String> name);
     // 用户是否存在
     boolean isExist(String user_ID);
     String getU_password(String user_ID);

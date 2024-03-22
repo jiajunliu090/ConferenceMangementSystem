@@ -22,9 +22,10 @@ public class CaptchaGenerator {
     private static final int LINE_NUM = 4;
     private static final int DOT_NUM = 80;
 
-    private Random random = new Random();
+    private static Random random = new Random();
+    private CaptchaGenerator(){}
 
-    public Captcha generateCaptchaImage() {
+    public static Captcha generateCaptcha() {
         BufferedImage image = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_RGB);
         Graphics g = image.getGraphics();
 
@@ -69,7 +70,7 @@ public class CaptchaGenerator {
         return new Captcha(code, image);
     }
 
-    private String generateRandomString(int length) {
+    private static String generateRandomString(int length) {
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < length; i++) {
             int type = random.nextInt(3);
@@ -87,7 +88,7 @@ public class CaptchaGenerator {
         }
         return sb.toString();
     }
-    public void saveImageToFile(BufferedImage image, String filename) {
+    private static void saveImageToFile(BufferedImage image, String filename) {
         try {
             String filePath = new StringBuffer().append("/Users/liujiajun/IdeaProjects/ConferenceMangementSystem/src/resources/captchaImage").append(File.separator).append(filename).toString();
             File output = new File(filePath);
@@ -100,8 +101,6 @@ public class CaptchaGenerator {
 
 
     public static void main(String[] args) {
-        CaptchaGenerator generator = new CaptchaGenerator();
-        Captcha captchaImage = generator.generateCaptchaImage();
 
     }
 }

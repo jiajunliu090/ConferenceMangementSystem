@@ -163,6 +163,68 @@ public class UserDAOImpl implements UserDAO {
     }
 
     @Override
+    public User newUserByName(String name) {
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+        String sql = "SELECT * FROM user_info WHERE name = ?;";
+        String user_ID = null;
+        String uPassword = null;
+        String meetingName = null;
+        String position = null;
+        String gender = null;
+        User user = null;
+        try {
+            connection = JDBCUtil.getConnection();
+            preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, name);
+            resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                user_ID = resultSet.getString("user_ID");
+                uPassword = resultSet.getString("u_password");
+                meetingName = resultSet.getString("meetingName");
+                position = resultSet.getString("position");
+                gender = resultSet.getString("gender");
+            }
+            user = new User(user_ID, uPassword, name, meetingName, position, gender);
+            return user;
+        }catch (Exception e) {
+            e.printStackTrace();
+        }finally {
+            JDBCUtil.closeConnection(resultSet, preparedStatement, connection);
+        }
+        return user;
+    }
+
+    @Override
+    public List<String> getIDByName(List<String> names) {
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+        List<String> userIDs = new ArrayList<>();
+        String sql = "SELECT user_ID FROM user_info WHERE name = ?";
+        try {
+            connection = JDBCUtil.getConnection();
+            preparedStatement = connection.prepareStatement(sql);
+
+            for (String name : names) {
+                preparedStatement.setString(1, name);
+                resultSet = preparedStatement.executeQuery();
+                if (resultSet.next()) {
+                    String userID = resultSet.getString("user_ID");
+                    userIDs.add(userID);
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            JDBCUtil.closeConnection(resultSet, preparedStatement, connection);
+        }
+        return userIDs;
+    }
+
+
+    @Override
     public boolean isExist(String user_ID) {
         Connection connection = null;
         PreparedStatement preparedStatement = null;

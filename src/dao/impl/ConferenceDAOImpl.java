@@ -20,8 +20,7 @@ import java.util.Map;
 
 public class ConferenceDAOImpl implements ConferenceDAO {
 
-    public ConferenceDAOImpl() {
-    }
+    public ConferenceDAOImpl() {}
 
     @Override
     public boolean addConference(Conference conferenceToAdd, String room_ID) {

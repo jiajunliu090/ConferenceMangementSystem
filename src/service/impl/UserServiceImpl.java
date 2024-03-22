@@ -67,6 +67,16 @@ public class UserServiceImpl implements UserService {
         return ConfigHelper.getInstance().getConferenceDAO().addConference(conference, room_ID);
     }
 
+    @Override
+    public boolean createConference(String meeting_ID, List<String> participators, LocalDateTime meetingTime) {
+        List<String> idByName = ConfigHelper.getInstance().getUserDAO().getIDByName(participators);
+        if (ConfigHelper.getInstance().getUserConferenceDAO().connectUserAndConference(idByName, meeting_ID)) {
+
+            System.out.println("创建成功");
+            return true;
+        }else return false;
+    }
+
     @Override // 时间格式：MM.dd.HH.mm
     public boolean updateConference(String meeting_ID, String theme, String meetingTime) { // 修改会议
         return ConfigHelper.getInstance().getConferenceDAO().updateConference(meeting_ID, loginUser_ID, theme, DateTimeUtils.fromUserInput(meetingTime));

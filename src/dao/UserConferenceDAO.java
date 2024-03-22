@@ -30,6 +30,8 @@ public interface UserConferenceDAO {
     List<User> getUsersByMeeting_ID(String meeting_ID);
     // 写评论
     boolean writeEvaluation(String evaluation, String meeting_ID, String user_ID);
+    // 关联用户和会议
+    boolean connectUserAndConference(List<String> user_ID, String meeting_ID);
 
 
 }

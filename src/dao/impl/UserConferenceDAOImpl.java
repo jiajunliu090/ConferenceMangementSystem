@@ -216,6 +216,47 @@ public class UserConferenceDAOImpl implements UserConferenceDAO {
         return false;
     }
 
+    @Override
+    public boolean connectUserAndConference(List<String> user_IDs, String meeting_ID) {
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        String sql = "INSERT INTO user_conference (user_ID, meeting_ID) VALUES (?, ?);";
+        try {
+            connection = JDBCUtil.getConnection();
+            preparedStatement = connection.prepareStatement(sql);
+
+            // 开始批处理
+            for (String user_ID : user_IDs) {
+                preparedStatement.setString(1, user_ID);
+                preparedStatement.setString(2, meeting_ID);
+                preparedStatement.addBatch();
+            }
+
+            // 执行批处理
+            int[] affectedRows = preparedStatement.executeBatch();
+
+            // 输出影响行数
+            for (int i = 0; i < affectedRows.length; i++) {
+                System.out.println("用户: " + user_IDs.get(i) + ", 参加会议: " + meeting_ID + "\n"
+                        + "影响行数：" + affectedRows[i]);
+            }
+
+            // 检查是否所有行都受影响
+            for (int affectedRow : affectedRows) {
+                if (affectedRow != 1) {
+                    return false;
+                }
+            }
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            JDBCUtil.closeConnection(preparedStatement, connection);
+        }
+        return false;
+    }
+
+
     public static void main(String[] args) {
         //System.out.println(ConfigHelper.getInstance().getUserConferenceDAO().getConferencesByUser_ID("test0001"));
         System.out.println(ConfigHelper.getInstance().getUserConferenceDAO().signInMeetingInDB("test0002", "muggleee"));
