@@ -24,7 +24,7 @@ public class CreateMeetingJDialog extends JDialog {
         finishButton = new JButton();
 
         //======== this ========
-        setTitle("\u4f1a\u8bae\u521b\u5efa\u6210\u529f/create successful");
+        setTitle("会议创建成功/create successful");
         var contentPane = getContentPane();
         contentPane.setLayout(null);
 
@@ -34,14 +34,14 @@ public class CreateMeetingJDialog extends JDialog {
             panel1.setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new
                     javax.swing.border.EmptyBorder(0,0,0,0), " ",javax
                     .swing.border.TitledBorder.CENTER,javax.swing.border.TitledBorder.BOTTOM,new java
-                    .awt.Font("D\u0069alog",java.awt.Font.BOLD,12),java.awt
+                    .awt.Font("Dialog",java.awt.Font.BOLD,12),java.awt
                     .Color.red),panel1. getBorder()));panel1. addPropertyChangeListener(new java.beans.
-                PropertyChangeListener(){@Override public void propertyChange(java.beans.PropertyChangeEvent e){if("\u0062order".
+                PropertyChangeListener(){@Override public void propertyChange(java.beans.PropertyChangeEvent e){if("border".
                 equals(e.getPropertyName()))throw new RuntimeException();}});
             panel1.setLayout(null);
 
             //---- label1 ----
-            label1.setText("\u4f1a\u8bae\u5ba4\uff1a");
+            label1.setText("会议室：");
             label1.setForeground(Color.lightGray);
             panel1.add(label1);
             label1.setBounds(75, 60, 105, 35);
@@ -53,13 +53,13 @@ public class CreateMeetingJDialog extends JDialog {
             label2.setBounds(220, 60, 105, 35);
 
             //---- label3 ----
-            label3.setText("===\u521b\u5efa\u7684\u4f1a\u8bae\u5c06\u5728\u6b64\u4f1a\u8bae\u5ba4\u4e2d\u5f00\u59cb===");
+            label3.setText("===创建的会议将在此会议室中开始===");
             label3.setForeground(Color.lightGray);
             panel1.add(label3);
             label3.setBounds(70, 110, 250, 60);
 
             //---- finishButton ----
-            finishButton.setText("\u5b8c\u6210/finish");
+            finishButton.setText("完成/finish");
             finishButton.setBackground(Color.black);
             finishButton.setForeground(Color.lightGray);
             panel1.add(finishButton);
