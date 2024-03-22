@@ -4,8 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9ade985b-690e-48b7-9e39-aa0553ad044f" name="Changes" comment="3.22.20.20完善">
-      <change beforePath="$PROJECT_DIR$/src/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/service/UserService.java" afterDir="false" />
+    <list default="true" id="9ade985b-690e-48b7-9e39-aa0553ad044f" name="Changes" comment="3.12.21:04更新">
+      <change beforePath="$PROJECT_DIR$/src/view/user/UserUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/user/UserUI.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,6 +46,15 @@
     </recent_temporary>
   </component>
   <component name="TaskManager">
+    <task id="LOCAL-00001" summary="3.12.21:04更新">
+      <option name="closed" value="true" />
+      <created>1711110422156</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1711110422156</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -60,8 +69,8 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="3.12.21:04更新" />
     <MESSAGE value="3.22.20.20完善" />
-    <option name="LAST_COMMIT_MESSAGE" value="3.22.20.20完善" />
+    <MESSAGE value="3.12.21:04更新" />
+    <option name="LAST_COMMIT_MESSAGE" value="3.12.21:04更新" />
   </component>
 </project>

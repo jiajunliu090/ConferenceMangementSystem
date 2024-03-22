@@ -156,12 +156,12 @@ public class UserUI extends JFrame {
             {
                 StartPanel.setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new javax.swing.border.
                         EmptyBorder(0, 0, 0, 0), " ", javax.swing.border.TitledBorder.CENTER, javax.swing
-                        .border.TitledBorder.BOTTOM, new java.awt.Font("Dia\u006cog", java.awt.Font.BOLD, 12),
+                        .border.TitledBorder.BOTTOM, new java.awt.Font("Dialog", java.awt.Font.BOLD, 12),
                         java.awt.Color.red), StartPanel.getBorder()));
                 StartPanel.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
                     @Override
                     public void propertyChange(java.beans.PropertyChangeEvent e) {
-                        if ("\u0062ord\u0065r".equals(e.getPropertyName()))
+                        if ("border".equals(e.getPropertyName()))
                             throw new RuntimeException();
                     }
                 });
@@ -468,7 +468,7 @@ public class UserUI extends JFrame {
                     updateMeetingButton.setBounds(560, 160, 120, 40);
 
                     //---- writeCommentButton ----
-                    writeCommentButton.setText("\u5199\u8bc4\u8bba");
+                    writeCommentButton.setText("写评论");
                     writeCommentButton.setBackground(new Color(0x666666));
                     writeCommentButton.setForeground(Color.lightGray);
                     writeCommentButton.addActionListener(new AbstractAction() {
@@ -526,36 +526,36 @@ public class UserUI extends JFrame {
                     userInfoPanel.setLayout(null);
 
                     //---- titleLabel ----
-                    titleLabel.setText("\u4e2a\u4eba\u4fe1\u606f/profile");
+                    titleLabel.setText("个人信息/profile");
                     userInfoPanel.add(titleLabel);
                     titleLabel.setBounds(325, 10, 100, 50);
 
-                    //---- infoNameLabel ----
-                    infoNameLabel.setText("\u59d3\u540d/Name");
+                    //---- infoNameLabel ----姓名
+                    infoNameLabel.setText("姓名/Name");
                     infoNameLabel.setForeground(Color.darkGray);
                     userInfoPanel.add(infoNameLabel);
                     infoNameLabel.setBounds(130, 70, 150, 25);
 
-                    //---- infoMeeingNameLabel ----
-                    infoMeeingNameLabel.setText("\u53c2\u4f1a\u540d/Meeting Name");
+                    //---- infoMeeingNameLabel ----参会名
+                    infoMeeingNameLabel.setText("参会名/Meeting Name");
                     infoMeeingNameLabel.setForeground(Color.darkGray);
                     userInfoPanel.add(infoMeeingNameLabel);
                     infoMeeingNameLabel.setBounds(130, 140, 155, 25);
 
                     //---- infoPositionLabel ----
                     infoPositionLabel.setForeground(Color.darkGray);
-                    infoPositionLabel.setText("\u804c\u4f4d/position");
+                    infoPositionLabel.setText("职位/position");
                     userInfoPanel.add(infoPositionLabel);
                     infoPositionLabel.setBounds(130, 210, 155, 25);
 
                     //---- user_IDLabel ----
-                    user_IDLabel.setText("\u7528\u6237ID/user_ID\uff1a");
+                    user_IDLabel.setText("用户ID/user_ID：");
                     user_IDLabel.setForeground(Color.darkGray);
                     userInfoPanel.add(user_IDLabel);
                     user_IDLabel.setBounds(0, 0, 105, 45);
 
                     //---- infoPasswordLabel ----
-                    infoPasswordLabel.setText("\u5bc6\u7801/password");
+                    infoPasswordLabel.setText("密码/password");
                     infoPasswordLabel.setForeground(Color.darkGray);
                     userInfoPanel.add(infoPasswordLabel);
                     infoPasswordLabel.setBounds(130, 285, 155, 25);
@@ -575,19 +575,19 @@ public class UserUI extends JFrame {
                     user_IDLabel2.setBounds(130, 10, 150, 25);
 
                     //---- infoGenderLabel ----
-                    infoGenderLabel.setText("\u6027\u522b/gender");
+                    infoGenderLabel.setText("性别/gender");
                     infoGenderLabel.setForeground(Color.darkGray);
                     userInfoPanel.add(infoGenderLabel);
                     infoGenderLabel.setBounds(430, 70, 150, 25);
 
                     //---- maleRadioButton ----
-                    maleRadioButton.setText("\u7537/male");
+                    maleRadioButton.setText("男/male");
                     maleRadioButton.setForeground(Color.darkGray);
                     userInfoPanel.add(maleRadioButton);
                     maleRadioButton.setBounds(465, 105, maleRadioButton.getPreferredSize().width, 25);
 
                     //---- femaleRadioButton ----
-                    femaleRadioButton.setText("\u5973/female");
+                    femaleRadioButton.setText("女/female");
                     femaleRadioButton.setForeground(Color.darkGray);
                     userInfoPanel.add(femaleRadioButton);
                     femaleRadioButton.setBounds(550, 105, femaleRadioButton.getPreferredSize().width, 25);
@@ -606,7 +606,7 @@ public class UserUI extends JFrame {
                     logOutAccount.setBounds(540, 430, 205, 35);
 
                     //---- infoUpdateButton ----
-                    infoUpdateButton.setText("\u63d0\u4ea4");
+                    infoUpdateButton.setText("提交");
                     infoUpdateButton.setForeground(Color.darkGray);
                     userInfoPanel.add(infoUpdateButton);
                     infoUpdateButton.setBounds(335, 380, infoUpdateButton.getPreferredSize().width, 35);
