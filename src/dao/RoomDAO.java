@@ -16,7 +16,6 @@ public interface RoomDAO {
     List<String> getAvailableRoom();
     // 查看会议室是否被占用
     boolean isAvailable(String room_ID);
-    //
     boolean openRoom(String room_ID);
     boolean closeRoom(String room_ID);
     // 更改会议室为占用

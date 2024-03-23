@@ -4,43 +4,69 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9ade985b-690e-48b7-9e39-aa0553ad044f" name="Changes" comment="3.22.20:58删除不需要的文件">
+    <list default="true" id="9ade985b-690e-48b7-9e39-aa0553ad044f" name="Changes" comment="3.22.22.22完善">
+      <change afterPath="$PROJECT_DIR$/src/utilities/TableGenerator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/view/element/NonEditableTableModel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dao/ConferenceDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dao/ConferenceDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dao/RoomConferenceDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dao/RoomConferenceDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/dao/RoomDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dao/RoomDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dao/UserDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dao/UserDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/dao/impl/ConferenceDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dao/impl/ConferenceDAOImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/dao/impl/RoomConferenceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dao/impl/RoomConferenceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dao/impl/RoomDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dao/impl/RoomDAOImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dao/impl/UserConferenceDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dao/impl/UserConferenceDAOImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dao/impl/UserDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dao/impl/UserDAOImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Conference.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Conference.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/service/UserService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/service/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/service/impl/UserServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utilities/DateTimeUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utilities/DateTimeUtils.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/view/user/CreateMeetingJDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/user/CreateMeetingJDialog.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/user/LogOutJDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/user/LogOutJDialog.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/user/SignInForMeetingJDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/user/SignInForMeetingJDialog.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/view/user/UserUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/user/UserUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/user/WriteCommentJFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/user/WriteCommentJFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/user/changeMeetingInfoJFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/user/changeMeetingInfoJFrame.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="jar://$USER_HOME$/Library/Java/JavaVirtualMachines/openjdk-21.0.2/Contents/Home/lib/src.zip!/java.desktop/javax/swing/JTable.java" root0="SKIP_INSPECTION" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 1
+}</component>
+  <component name="ProjectId" id="2e4iJIjlaRg1hQ5y5yLuz8IrxM3" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "Application.DateTimeUtils.executor": "Debug",
     "Application.Main.executor": "Run",
+    "Application.TableGenerator.executor": "Debug",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "main",
-    "node.js.selected.package.tslint": "(autodetect)"
+    "kotlin-language-version-configured": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "editor.preferences.fonts.default",
+    "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
   <component name="RunManager" selected="Application.Main">
@@ -70,13 +96,28 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="TableGenerator" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="utilities.TableGenerator" />
+      <module name="ConferenceMangementSystem" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="utilities.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Application.Main" />
+        <item itemvalue="Application.TableGenerator" />
         <item itemvalue="Application.DateTimeUtils" />
       </list>
     </recent_temporary>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task id="LOCAL-00001" summary="3.12.21:04更新">
       <option name="closed" value="true" />
@@ -110,8 +151,32 @@
       <option name="project" value="LOCAL" />
       <updated>1711112318539</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="3.22.22.22完善">
+      <option name="closed" value="true" />
+      <created>1711117337607</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1711117337607</updated>
+    </task>
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="9ade985b-690e-48b7-9e39-aa0553ad044f" name="Changes" comment="3.22.22.22完善" />
+      <created>1711170178614</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1711170178614</updated>
+      <workItem from="1711170180693" duration="97000" />
+      <workItem from="1711170282588" duration="19000" />
+      <workItem from="1711170307232" duration="871000" />
+      <workItem from="1711171369404" duration="999000" />
+      <workItem from="1711172407705" duration="55000" />
+      <workItem from="1711172509087" duration="4977000" />
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.History.Properties">
     <option name="COLUMN_ID_ORDER">
@@ -130,14 +195,15 @@
     <MESSAGE value="3.22.20:35更新" />
     <MESSAGE value="3.22.20:53更新" />
     <MESSAGE value="3.22.20:58删除不需要的文件" />
-    <option name="LAST_COMMIT_MESSAGE" value="3.22.20:58删除不需要的文件" />
+    <MESSAGE value="3.22.22.22完善" />
+    <option name="LAST_COMMIT_MESSAGE" value="3.22.22.22完善" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/dao/impl/RoomConferenceImpl.java</url>
-          <line>52</line>
+          <line>53</line>
           <properties class="dao.impl.RoomConferenceImpl" method="addMeetingToRoom">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />
@@ -159,22 +225,11 @@
           <line>223</line>
           <option name="timeStamp" value="231" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/view/user/UserUI.java</url>
-          <line>381</line>
-          <option name="timeStamp" value="232" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/view/user/UserUI.java</url>
-          <line>382</line>
-          <option name="timeStamp" value="233" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/view/user/UserUI.java</url>
-          <line>383</line>
-          <option name="timeStamp" value="234" />
-        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

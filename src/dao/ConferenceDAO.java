@@ -28,5 +28,6 @@ public interface ConferenceDAO {
     boolean updateConference(String meeting_ID, String user_ID, String theme, LocalDateTime meetingTime); // 在这里改主题和会议时间
     // 验证是否是创建者
     boolean isCreator(String meeting_ID, String user_ID);
-
+    // String[] cols = new String[]{"会议ID", "会议室", "会议时间", "是否签到"};
+    List<Object[]> getMeetingInfoData(String user_ID);
 }

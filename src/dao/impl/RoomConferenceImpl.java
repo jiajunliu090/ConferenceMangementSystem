@@ -11,6 +11,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 public class RoomConferenceImpl implements RoomConferenceDAO {
@@ -72,6 +73,35 @@ public class RoomConferenceImpl implements RoomConferenceDAO {
         }
         return false;
     }
+
+    @Override
+    public List<String> getRoom_IDByMeeting_ID(List<String> meeting_IDs) {
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+        List<String> room_IDs = new ArrayList<>();
+        String sql = "SELECT room_ID FROM conference_management.room_conference WHERE meeting_ID = ?";
+        try {
+            connection = JDBCUtil.getConnection();
+            preparedStatement = connection.prepareStatement(sql);
+
+            for (String meeting_ID : meeting_IDs) {
+                // 在每次循环迭代时，设置预处理语句的参数值为当前迭代的meeting_ID
+                preparedStatement.setString(1, meeting_ID);
+                resultSet = preparedStatement.executeQuery();
+                while (resultSet.next()) {
+                    room_IDs.add(resultSet.getString("room_ID"));
+                }
+            }
+
+        }catch (Exception e) {
+            e.printStackTrace();
+        }finally {
+            JDBCUtil.closeConnection(resultSet, preparedStatement, connection);
+        }
+        return room_IDs;
+    }
+
 
     public static void main(String[] args) {
         RoomConferenceDAO roomConferenceDAO = new RoomConferenceImpl();

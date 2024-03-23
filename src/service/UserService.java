@@ -3,6 +3,7 @@ package service;
 import model.Conference;
 import model.User;
 
+import javax.swing.table.TableModel;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -22,7 +23,7 @@ public interface UserService {
     List<Conference> meetingsToAttend();
     // 创建会议
     boolean createConference(String meeting_ID, String room_ID , List<User> participators, LocalDateTime meetingTime, String theme);
-    boolean createConference(String meeting_ID, List<String> participators, LocalDateTime meetingTime);
+    boolean createConference(String meeting_ID, String room_ID, List<String> participators, LocalDateTime meetingTime);
     // 修改会议
     boolean updateConference(String meeting_ID, String theme, String meetingTime); // 先进行验证
     // 删除会议
@@ -35,4 +36,7 @@ public interface UserService {
     boolean updateUser(String name, String meetingName, String position, String password, String gender);
     // 评价会议
     boolean evaluateMeeting(String evaluation, String meeting_ID);
+    // 获得现有的会议室
+    String getAvailableRoom_ID();
+
 }

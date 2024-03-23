@@ -68,14 +68,15 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public boolean createConference(String meeting_ID, List<String> participators, LocalDateTime meetingTime) {
+    public boolean createConference(String meeting_ID, String room_ID, List<String> participators, LocalDateTime meetingTime) {
         List<String> idByName = ConfigHelper.getInstance().getUserDAO().getIDByName(participators);
+        idByName.add(loginUser_ID);
         Conference conference = new Conference(
                 meeting_ID,
                 loginUser_ID,
                 ConfigHelper.getInstance().getUserDAO().getUserByUser_ID(idByName),
                 meetingTime);
-        if (ConfigHelper.getInstance().getConferenceDAO().addConference(conference, ConfigHelper.getInstance().getRoomDAO().getAvailableRoom().get(0))) {
+        if (ConfigHelper.getInstance().getConferenceDAO().addConference(conference, room_ID)) {
             if (ConfigHelper.getInstance().getUserConferenceDAO().connectUserAndConference(idByName, meeting_ID)) {
                 System.out.println("会议会议室关联成功，用户会议关联成功");
                 return true;
@@ -116,6 +117,12 @@ public class UserServiceImpl implements UserService {
     @Override
     public boolean evaluateMeeting(String evaluation, String meeting_ID) {
         return ConfigHelper.getInstance().getUserConferenceDAO().writeEvaluation(evaluation, meeting_ID, loginUser_ID);
+    }
+
+    @Override
+    public String getAvailableRoom_ID() {
+
+        return ConfigHelper.getInstance().getRoomDAO().getAvailableRoom().getFirst();
     }
 
 

@@ -4,6 +4,7 @@ import view.element.FocusButton;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
 
 public class CreateMeetingJDialog extends JDialog {
     private JPanel panel1;
@@ -11,8 +12,10 @@ public class CreateMeetingJDialog extends JDialog {
     private JLabel label2;
     private JLabel label3;
     private FocusButton finishButton;
-    public CreateMeetingJDialog(Window owner) {
+    private String room_id;
+    public CreateMeetingJDialog(Window owner, String room_id) {
         super(owner);
+        this.room_id = room_id;
         initComponents();
     }
 
@@ -49,7 +52,7 @@ public class CreateMeetingJDialog extends JDialog {
             label1.setBounds(75, 60, 105, 35);
 
             //---- label2 ----
-            label2.setText("text");
+            label2.setText(this.room_id);
             label2.setForeground(Color.lightGray);
             panel1.add(label2);
             label2.setBounds(220, 60, 105, 35);
@@ -64,6 +67,10 @@ public class CreateMeetingJDialog extends JDialog {
             finishButton.setText("完成/finish");
             finishButton.setBackground(Color.black);
             finishButton.setForeground(Color.lightGray);
+            finishButton.addActionListener(new AbstractAction() {
+                @Override public void actionPerformed(ActionEvent e) {
+                    dispose();
+                }});
             panel1.add(finishButton);
             finishButton.setBounds(130, 195, 105, 40);
 

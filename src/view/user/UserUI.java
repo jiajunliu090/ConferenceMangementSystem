@@ -4,6 +4,7 @@ import model.User;
 import service.UserService;
 import service.impl.UserServiceImpl;
 import utilities.DateTimeUtils;
+import utilities.TableGenerator;
 import view.element.FocusButton;
 import view.element.MyJTextField;
 
@@ -64,7 +65,7 @@ public class UserUI extends JFrame {
     private JPanel userInfoPanel;
     private JLabel titleLabel;
     private JLabel infoNameLabel;
-    private JLabel infoMeeingNameLabel;
+    private JLabel infoMeetingNameLabel;
     private JLabel infoPositionLabel;
     private JLabel user_IDLabel;
     private JLabel infoPasswordLabel;
@@ -124,7 +125,7 @@ public class UserUI extends JFrame {
         userInfoPanel = new JPanel();
         titleLabel = new JLabel();
         infoNameLabel = new JLabel();
-        infoMeeingNameLabel = new JLabel();
+        infoMeetingNameLabel = new JLabel();
         infoPositionLabel = new JLabel();
         user_IDLabel = new JLabel();
         infoPasswordLabel = new JLabel();
@@ -266,6 +267,7 @@ public class UserUI extends JFrame {
                     {
 
                         //---- conferenceTable ----
+                        conferenceTable.setModel(TableGenerator.generateComingMeetingTable(loginUser.getUser_ID()));
                         conferenceTable.setForeground(Color.lightGray);
                         conferenceTable.setBackground(Color.darkGray);
                         conferenceTable.setBorder(new LineBorder(Color.gray, 2, true));
@@ -372,17 +374,19 @@ public class UserUI extends JFrame {
                             String meeting_id = meeting_IDField.getText();
                             String participants = participantsField.getText();
                             String meeting_time = meetingTimeField.getText();
-                            List<String> participants_name = Arrays.stream(participants.split("，")).toList();
+                            List<String> participants_name = Arrays.stream(participants.split(",")).toList();
+                            String room_ID = userService.getAvailableRoom_ID();
                             //System.out.println("meeting_id : " + meeting_id);
                             //System.out.println("participants : " + participants);
                             //System.out.println("meeting_time : " + meeting_time);
                             //System.out.println(participants_name);
                             //System.out.println("format_time : " + DateTimeUtils.fromUserInput(meeting_time));
                             // 先创建会议
-                            if (userService.createConference(meeting_id, participants_name, DateTimeUtils.fromUserInput(meeting_time))) {
+                            System.out.println("room_id : " + room_ID);
+                            if (userService.createConference(meeting_id, room_ID, participants_name, DateTimeUtils.fromUserInput(meeting_time))) {
                                 System.out.println("创建成功");
                                 // 弹出成功画面
-                                CreateMeetingJDialog createMeetingJDialog = new CreateMeetingJDialog(UserUI.this);
+                                CreateMeetingJDialog createMeetingJDialog = new CreateMeetingJDialog(UserUI.this, room_ID);
                                 createMeetingJDialog.setVisible(true);
                             }
                         }
@@ -417,6 +421,7 @@ public class UserUI extends JFrame {
                     {
 
                         //---- conferenceTable2 ----
+                        conferenceTable2.setModel(TableGenerator.generateMeetingInfoTable(loginUser.getUser_ID()));
                         conferenceTable2.setForeground(Color.lightGray);
                         conferenceTable2.setBackground(Color.darkGray);
                         conferenceTable2.setBorder(new LineBorder(Color.gray, 2, true));
@@ -547,11 +552,11 @@ public class UserUI extends JFrame {
                     userInfoPanel.add(infoNameLabel);
                     infoNameLabel.setBounds(130, 70, 150, 25);
 
-                    //---- infoMeeingNameLabel ----参会名
-                    infoMeeingNameLabel.setText("参会名/Meeting Name");
-                    infoMeeingNameLabel.setForeground(Color.white);
-                    userInfoPanel.add(infoMeeingNameLabel);
-                    infoMeeingNameLabel.setBounds(130, 140, 155, 25);
+                    //---- infoMeetingNameLabel ----参会名
+                    infoMeetingNameLabel.setText("参会名/Meeting Name");
+                    infoMeetingNameLabel.setForeground(Color.white);
+                    userInfoPanel.add(infoMeetingNameLabel);
+                    infoMeetingNameLabel.setBounds(130, 140, 155, 25);
 
                     //---- infoPositionLabel ----
                     infoPositionLabel.setForeground(Color.white);
