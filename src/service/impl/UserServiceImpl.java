@@ -5,15 +5,27 @@ import model.User;
 import service.UserService;
 import utilities.ConfigHelper;
 import utilities.DateTimeUtils;
+import utilities.Session;
 
 import java.time.LocalDateTime;
 import java.util.List;
 
 public class UserServiceImpl implements UserService {
 
+    private static UserServiceImpl instance;
+
     private String loginUser_ID;
 
-    public UserServiceImpl() {
+    // 私有构造函数，防止外部类直接实例化
+    private UserServiceImpl() {
+    }
+
+    // 获取单例实例的静态方法
+    public static UserServiceImpl getInstance() {
+        if (instance == null) {
+            instance = new UserServiceImpl();
+        }
+        return instance;
     }
     @Override
     public boolean registerUser(String user_ID, String u_password, String name) {
@@ -30,9 +42,11 @@ public class UserServiceImpl implements UserService {
     public boolean loginUser(String user_ID, String u_password) {
         if (ConfigHelper.getInstance().getUserDAO().isCorrect(user_ID, u_password)) {
             this.loginUser_ID = user_ID;
+            User loggedInUser = ConfigHelper.getInstance().getUserDAO().newUserByDB_User_ID(user_ID);
+            Session.getInstance().loginUser(user_ID, loggedInUser); // 将登录成功的用户信息保存到会话对象中
             System.out.println("登录成功");
             return true;
-        }else return false;
+        } else return false;
     }
 
     @Override
@@ -44,6 +58,7 @@ public class UserServiceImpl implements UserService {
     public User getLoginUser() {
         return ConfigHelper.getInstance().getUserDAO().newUserByDB_User_ID(getLoginUser_ID());
     }
+
 
 
     @Override

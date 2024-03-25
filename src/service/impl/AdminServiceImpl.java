@@ -10,6 +10,22 @@ import utilities.ConfigHelper;
 import java.util.List;
 
 public class AdminServiceImpl implements AdminService {
+    private static AdminServiceImpl instance;
+
+    private AdminServiceImpl() {
+        // 私有构造函数防止外部实例化
+    }
+
+    public static AdminServiceImpl getInstance() {
+        if (instance == null) {
+            synchronized (AdminServiceImpl.class) {
+                if (instance == null) {
+                    instance = new AdminServiceImpl();
+                }
+            }
+        }
+        return instance;
+    }
 
     @Override
     public boolean login(String admin_ID, String a_password) {
@@ -42,10 +58,10 @@ public class AdminServiceImpl implements AdminService {
     }
 
     public static void main(String[] args) {
-        AdminService adminService = new AdminServiceImpl();
-        //adminService.addConferenceRoom("1234567H");
-        //adminService.closeRoom("1234567H");
-        //adminService.openRoom("1234567H");
-        //adminService.getConferenceByUser("1234");
+        AdminService adminService = AdminServiceImpl.getInstance();
+        // adminService.addConferenceRoom("1234567H");
+        // adminService.closeRoom("1234567H");
+        // adminService.openRoom("1234567H");
+        // adminService.getConferenceByUser("1234");
     }
 }

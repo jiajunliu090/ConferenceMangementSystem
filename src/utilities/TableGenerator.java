@@ -1,7 +1,5 @@
 package utilities;
 
-import view.element.NonEditableTableModel;
-
 import javax.print.DocFlavor;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
@@ -15,7 +13,7 @@ public class TableGenerator {
     public static TableModel generateComingMeetingTable(String loginUser_ID) {
         String[] cols = new String[]{"会议ID", "会议室"};
         Object[][] data = insertData(loginUser_ID);
-        return new NonEditableTableModel(data, cols);
+        return new DefaultTableModel(data, cols);
     }
     public static TableModel generateMeetingInfoTable(String loginUser_ID) {
         String[] cols = new String[]{"会议ID", "会议室", "会议时间", "是否签到"};
@@ -29,7 +27,7 @@ public class TableGenerator {
         }
 
         // 创建DefaultTableModel并返回
-        return new NonEditableTableModel(dataArray, cols);
+        return new DefaultTableModel(dataArray, cols);
 
     }
     // 创建一个两列的表格{"会议ID", "会议室"}
@@ -42,9 +40,5 @@ public class TableGenerator {
             data[i][1] = room_ids.get(i);
         }
         return data;
-    }
-
-    public static void main(String[] args) {
-        String[] cols = new String[]{"会议ID", "会议室", "会议时间", "是否签到"};
     }
 }
