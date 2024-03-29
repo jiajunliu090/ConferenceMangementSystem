@@ -75,6 +75,9 @@ public class ClientHandler implements Runnable {
                         handleSignInMeeting();
                         // 刷新表格
                         break;
+                    case "resetTable":
+                        handleResetTable();
+                        break;
                     case "removeFromMeeting":
                         handleRemoveFromMeeting();
                         // 刷新表格
@@ -213,29 +216,22 @@ public class ClientHandler implements Runnable {
             handleResetTable(user_ID);
         }
     }
+    private void handleResetTable() throws IOException {
+        String user_ID = in.readLine();
+        handleResetTable(user_ID);
+    }
 
     private void handleResetTable(String user_ID) throws IOException {
-        resetTable1(user_ID);
-        resetTable2(user_ID);
-    }
-
-    private void resetTable1(String user_ID) throws IOException {
         TableModel tableModel = TableGenerator.generateComingMeetingTable(user_ID);
-        System.out.println("刷新表格1...");
+        TableModel tableModel2 = TableGenerator.generateMeetingInfoTable(user_ID);
+        System.out.println("刷新表格...");
         try (ObjectOutputStream outputStream = new ObjectOutputStream(socket.getOutputStream())) {
-            outputStream.writeObject(tableModel);
+            outputStream.writeObject(tableModel);  // 表格1
+            outputStream.writeObject(tableModel2); // 表格2
             outputStream.flush();
         }
     }
 
-    private void resetTable2(String user_ID) throws IOException {
-        TableModel tableModel = TableGenerator.generateMeetingInfoTable(user_ID);
-        System.out.println("刷新表格2...");
-        try (ObjectOutputStream outputStream = new ObjectOutputStream(socket.getOutputStream())) {
-            outputStream.writeObject(tableModel);
-            outputStream.flush();
-        }
-    }
     private void handleGetCodeImage() throws IOException {
         Captcha captcha = CaptchaGenerator.generateCaptcha();
         BufferedImage image = captcha.getImage();
@@ -265,9 +261,11 @@ public class ClientHandler implements Runnable {
     }
     private void handleRemoveFromMeeting() throws IOException {
         String meeting_ID = in.readLine();
+        String user_ID = in.readLine();
         boolean b = UserServiceImpl.getInstance().removeConference(meeting_ID);
         if (b) {
             out.println("removeSuccess");
+            handleResetTable(user_ID);
         }else out.println("removeFail");
         out.flush();
     }
@@ -336,4 +334,5 @@ public class ClientHandler implements Runnable {
             out.flush();
         }
     }
+
 }
