@@ -1,7 +1,6 @@
 package dao.impl;
 
 import dao.UserDAO;
-import model.Conference;
 import model.User;
 import utilities.JDBCUtil;
 
@@ -10,7 +9,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 public class UserDAOImpl implements UserDAO {
     List<User> users;

@@ -18,7 +18,7 @@ public interface UserService {
     String getLoginUser_ID();
     User getLoginUser();
     // 注销
-    boolean deleteUser(String user_ID, String u_password, String ensure);
+    boolean deleteUser(String user_ID, String ensure);
     // 查看自己需要参加的会议
     List<Conference> meetingsToAttend();
     // 创建会议
@@ -38,5 +38,10 @@ public interface UserService {
     boolean evaluateMeeting(String evaluation, String meeting_ID);
     // 获得现有的会议室
     String getAvailableRoom_ID();
+    // 添加参会人
+    boolean addUserToConference(List<String> user_IDs, String meeting_ID);
+    // 删除参会人
+    boolean removeConferenceByIDs(List<String> user_IDs, String meeting_ID);
+
 
 }

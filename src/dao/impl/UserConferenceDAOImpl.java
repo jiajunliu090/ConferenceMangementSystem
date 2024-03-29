@@ -1,6 +1,5 @@
 package dao.impl;
 
-import dao.ConferenceDAO;
 import dao.UserConferenceDAO;
 import model.Conference;
 import model.User;
@@ -11,7 +10,6 @@ import utilities.JDBCUtil;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -174,7 +172,7 @@ public class UserConferenceDAOImpl implements UserConferenceDAO {
             preparedStatement.setString(1, user_ID);
             preparedStatement.setString(2, meeting_ID);
             int affectRow = preparedStatement.executeUpdate();
-            System.out.println("删除会议用户：影响行数：" + affectRow);
+            System.out.println("删除会议参加者：影响行数：" + affectRow);
             return affectRow == 1;
         }catch (Exception e) {
             e.printStackTrace();
@@ -183,6 +181,46 @@ public class UserConferenceDAOImpl implements UserConferenceDAO {
         }
         return false;
     }
+
+    @Override
+    public boolean removeRecord(String meeting_ID, List<String> user_IDs) {
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        String sql = "DELETE FROM conference_management.user_conference WHERE user_ID = ? AND meeting_ID = ?";
+        try {
+            connection = JDBCUtil.getConnection();
+            preparedStatement = connection.prepareStatement(sql);
+
+            // 开始批处理
+            for (String user_ID : user_IDs) {
+                preparedStatement.setString(1, user_ID);
+                preparedStatement.setString(2, meeting_ID);
+                preparedStatement.addBatch();
+            }
+
+            // 执行批处理
+            int[] affectedRows = preparedStatement.executeBatch();
+
+            // 打印受影响的行数
+            for (int rows : affectedRows) {
+                System.out.println("删除会议参加者：影响行数：" + rows);
+            }
+
+            // 判断是否删除成功
+            for (int rows : affectedRows) {
+                if (rows != 1) {
+                    return false; // 如果有任何一条记录删除失败，则返回false
+                }
+            }
+            return true; // 所有记录都成功删除
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            JDBCUtil.closeConnection(preparedStatement, connection);
+        }
+        return false;
+    }
+
 
     @Override
     public List<User> getUsersByMeeting_ID(String meeting_ID) {
@@ -221,7 +259,7 @@ public class UserConferenceDAOImpl implements UserConferenceDAO {
         System.out.println("关联用户和会议");
         Connection connection = null;
         PreparedStatement preparedStatement = null;
-        String sql = "INSERT INTO user_conference (user_ID, meeting_ID) VALUES (?, ?);";
+        String sql = "INSERT INTO conference_management.user_conference (user_ID, meeting_ID) VALUES (?, ?);";
         try {
             connection = JDBCUtil.getConnection();
             preparedStatement = connection.prepareStatement(sql);

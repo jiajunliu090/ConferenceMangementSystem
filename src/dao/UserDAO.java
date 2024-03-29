@@ -1,6 +1,5 @@
 package dao;
 
-import model.Conference;
 import model.User;
 
 import java.util.List;

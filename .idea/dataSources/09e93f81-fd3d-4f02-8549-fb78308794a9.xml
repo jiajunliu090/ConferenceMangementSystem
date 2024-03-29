@@ -1,7 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dataSource name="conference_management">
   <database-model serializer="dbm" dbms="MYSQL" family-id="MYSQL" format-version="4.51">
-    <root id="1"/>
+    <root id="1">
+      <DefaultCasing>lower/lower</DefaultCasing>
+      <DefaultEngine>InnoDB</DefaultEngine>
+      <DefaultTmpEngine>InnoDB</DefaultTmpEngine>
+      <Grants>conference_management|schema||conference_management||ALTER|G
+conference_management|schema||conference_management||ALTER ROUTINE|G
+conference_management|schema||conference_management||CREATE|G
+conference_management|schema||conference_management||CREATE ROUTINE|G
+conference_management|schema||conference_management||CREATE TEMPORARY TABLES|G
+conference_management|schema||conference_management||CREATE VIEW|G
+conference_management|schema||conference_management||DELETE|G
+conference_management|schema||conference_management||DROP|G
+conference_management|schema||conference_management||EVENT|G
+conference_management|schema||conference_management||EXECUTE|G
+conference_management|schema||conference_management||INDEX|G
+conference_management|schema||conference_management||INSERT|G
+conference_management|schema||conference_management||LOCK TABLES|G
+conference_management|schema||conference_management||REFERENCES|G
+conference_management|schema||conference_management||SELECT|G
+conference_management|schema||conference_management||SHOW VIEW|G
+conference_management|schema||conference_management||TRIGGER|G
+conference_management|schema||conference_management||UPDATE|G</Grants>
+      <ServerVersion>8.0.24</ServerVersion>
+    </root>
     <collation id="2" parent="1" name="armscii8_general_ci">
       <Charset>armscii8</Charset>
       <DefaultForCharset>1</DefaultForCharset>
@@ -863,7 +886,7 @@
       <CollationName>utf8_general_ci</CollationName>
     </schema>
     <schema id="275" parent="1" name="conference_management">
-      <LastIntrospectionLocalTimestamp>2024-03-21.12:56:02</LastIntrospectionLocalTimestamp>
+      <LastIntrospectionLocalTimestamp>2024-03-28.14:24:29</LastIntrospectionLocalTimestamp>
       <CollationName>utf8mb4_unicode_ci</CollationName>
     </schema>
     <user id="276" parent="1" name="conference_management"/>
@@ -892,12 +915,12 @@
       <CollationName>utf8mb4_general_ci</CollationName>
     </table>
     <column id="283" parent="277" name="admin_ID">
-      <DasType>varchar(8)|0s</DasType>
+      <DasType>varchar(10)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
     <column id="284" parent="277" name="a_password">
-      <DasType>varchar(6)|0s</DasType>
+      <DasType>varchar(10)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>2</Position>
     </column>
@@ -916,7 +939,7 @@
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
     <column id="288" parent="278" name="meeting_ID">
-      <DasType>varchar(8)|0s</DasType>
+      <DasType>varchar(10)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
@@ -933,7 +956,7 @@
       <Position>4</Position>
     </column>
     <column id="292" parent="278" name="creator_ID">
-      <DasType>varchar(8)|0s</DasType>
+      <DasType>varchar(10)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>5</Position>
     </column>
@@ -948,12 +971,12 @@
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
     <column id="295" parent="279" name="room_ID">
-      <DasType>varchar(8)|0s</DasType>
+      <DasType>varchar(10)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
     <column id="296" parent="279" name="meeting_ID">
-      <DasType>varchar(8)|0s</DasType>
+      <DasType>varchar(10)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>2</Position>
     </column>
@@ -991,7 +1014,7 @@ meeting_ID</ColNames>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
     <column id="303" parent="280" name="room_ID">
-      <DasType>varchar(8)|0s</DasType>
+      <DasType>varchar(10)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
@@ -1018,12 +1041,12 @@ meeting_ID</ColNames>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
     <column id="308" parent="281" name="user_ID">
-      <DasType>varchar(8)|0s</DasType>
+      <DasType>varchar(10)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
     <column id="309" parent="281" name="meeting_ID">
-      <DasType>varchar(8)|0s</DasType>
+      <DasType>varchar(10)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>2</Position>
     </column>
@@ -1070,12 +1093,12 @@ meeting_ID</ColNames>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
     <column id="318" parent="282" name="user_ID">
-      <DasType>varchar(8)|0s</DasType>
+      <DasType>varchar(10)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
     <column id="319" parent="282" name="u_password">
-      <DasType>varchar(6)|0s</DasType>
+      <DasType>varchar(10)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>2</Position>
     </column>
@@ -1092,12 +1115,12 @@ meeting_ID</ColNames>
     </column>
     <column id="322" parent="282" name="position">
       <DasType>varchar(20)|0s</DasType>
-      <DefaultExpression>&apos;职工&apos;</DefaultExpression>
+      <DefaultExpression>&apos;undecided&apos;</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>5</Position>
     </column>
     <column id="323" parent="282" name="gender">
-      <DasType>varchar(9)|0s</DasType>
+      <DasType>varchar(10)|0s</DasType>
       <DefaultExpression>&apos;undecided&apos;</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>6</Position>

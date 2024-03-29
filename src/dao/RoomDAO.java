@@ -20,5 +20,6 @@ public interface RoomDAO {
     boolean closeRoom(String room_ID);
     // 更改会议室为占用
     boolean occupyRoom(String room_ID);
+    boolean unoccupiedRoom(String room_ID);
 
 }

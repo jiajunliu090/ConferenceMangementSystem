@@ -2,20 +2,16 @@ package dao.impl;
 
 import dao.ConferenceDAO;
 import model.Conference;
-import model.ConferenceRoom;
-import model.User;
 import utilities.ConfigHelper;
 import utilities.DateTimeUtils;
 import utilities.JDBCUtil;
 
-import javax.print.attribute.standard.MediaSize;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 //✔️
 
 public class ConferenceDAOImpl implements ConferenceDAO {
@@ -71,11 +67,6 @@ public class ConferenceDAOImpl implements ConferenceDAO {
         }
         return false;
     }
-
-    //@Override
-    //public Map<LocalDateTime, List<User>> getMeetingInfo(String meeting_ID) {
-    //    return null;
-    //}
 
     @Override
     public List<String> getMeeting_ID(String user_ID) { // 根据参会人查找会议
@@ -159,8 +150,8 @@ public class ConferenceDAOImpl implements ConferenceDAO {
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
         String sql = "SELECT rc.meeting_ID, rc.room_ID, rc.meetingTime, uc.isSignIn\n" +
-                "FROM room_conference rc\n" +
-                "JOIN user_conference uc ON rc.meeting_ID = uc.meeting_ID\n" +
+                "FROM conference_management.room_conference rc\n" +
+                "JOIN conference_management.user_conference uc ON rc.meeting_ID = uc.meeting_ID\n" +
                 "WHERE uc.user_ID = ?";
         List<Object[]> data = new ArrayList<>();
         try {
@@ -181,7 +172,6 @@ public class ConferenceDAOImpl implements ConferenceDAO {
                 // 将Object数组添加到列表中
                 data.add(rowData);
             }
-
             // 返回包含所有行数据的列表
             return data;
         } catch (Exception e) {
@@ -195,7 +185,7 @@ public class ConferenceDAOImpl implements ConferenceDAO {
     private void updateHelper(String meeting_ID, String theme, LocalDateTime meetingTime) {
         Connection connection = null;
         PreparedStatement preparedStatement = null;
-        String sql = "UPDATE conference_management.conference_info SET theme = ? AND meetingTime = ? WHERE meeting_ID = ?";
+        String sql = "UPDATE conference_management.conference_info SET theme = ? , meetingTime = ? WHERE meeting_ID = ?";
         try {
             connection = JDBCUtil.getConnection();
             preparedStatement = connection.prepareStatement(sql);
@@ -203,17 +193,11 @@ public class ConferenceDAOImpl implements ConferenceDAO {
             preparedStatement.setString(2, DateTimeUtils.toDbDateTime(meetingTime));
             preparedStatement.setString(3, meeting_ID);
             int affectRow = preparedStatement.executeUpdate();
-            System.out.println("更新会议：影响的行数：" + affectRow);
+            System.out.println("更新会议（主题，时间）：影响的行数：" + affectRow);
         }catch (Exception e) {
             e.printStackTrace();
         }finally {
             JDBCUtil.closeConnection(preparedStatement, connection);
         }
     }
-
-    public static void main(String[] args) {
-        //ConfigHelper.getInstance().getConferenceDAO().deleteConference("jj_12345"); ✔️
-
-    }
-
 }

@@ -2,7 +2,6 @@ package dao.impl;
 
 import dao.RoomConferenceDAO;
 import model.Conference;
-import model.ConferenceRoom;
 import utilities.ConfigHelper;
 import utilities.DateTimeUtils;
 import utilities.JDBCUtil;
@@ -74,6 +73,8 @@ public class RoomConferenceImpl implements RoomConferenceDAO {
         return false;
     }
 
+
+
     @Override
     public List<String> getRoom_IDByMeeting_ID(List<String> meeting_IDs) {
         Connection connection = null;
@@ -100,6 +101,50 @@ public class RoomConferenceImpl implements RoomConferenceDAO {
             JDBCUtil.closeConnection(resultSet, preparedStatement, connection);
         }
         return room_IDs;
+    }
+
+    @Override
+    public String getRoom_IDByMeeting_ID(String meeting_ID) {
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+        String sql = "SELECT room_ID FROM conference_management.room_conference WHERE meeting_ID = ?";
+        try {
+            connection = JDBCUtil.getConnection();
+            preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, meeting_ID);
+            resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                return resultSet.getString("room_ID");
+            }
+        }catch (Exception e) {
+            e.printStackTrace();
+        }finally {
+            JDBCUtil.closeConnection(resultSet, preparedStatement, connection);
+        }
+        return null;
+    }
+
+    @Override
+    public boolean removeMeetingFromRoom(String meeting_ID, String room_ID) {
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        String sql = "DELETE FROM conference_management.room_conference WHERE room_ID = ? AND meeting_ID = ?";
+        try {
+            connection = JDBCUtil.getConnection();
+            preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, room_ID);
+            preparedStatement.setString(2, meeting_ID);
+            int affectRow = preparedStatement.executeUpdate();
+            System.out.println("移除会议-会议室记录：影响行数：" + affectRow);
+            ConfigHelper.getInstance().getRoomDAO().unoccupiedRoom(room_ID);
+            return affectRow == 1;
+        }catch (Exception e) {
+            e.printStackTrace();
+        }finally {
+            JDBCUtil.closeConnection(preparedStatement, connection);
+        }
+        return false;
     }
 
 

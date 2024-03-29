@@ -59,12 +59,10 @@ public class UserServiceImpl implements UserService {
         return ConfigHelper.getInstance().getUserDAO().newUserByDB_User_ID(getLoginUser_ID());
     }
 
-
-
     @Override
-    public boolean deleteUser(String user_ID, String u_password, String ensure) {
+    public boolean deleteUser(String user_ID, String ensure) {
         String contrast = "我同意注销" + user_ID; // 写保证
-        if (ConfigHelper.getInstance().getUserDAO().isCorrect(user_ID, u_password) && contrast.equals(ensure)) { // 如果存在并且用户名和密码对的上的话
+        if (contrast.equals(ensure)) {
             return ConfigHelper.getInstance().getUserDAO().deleteUser(user_ID); // 删除
         }
         return false;
@@ -136,8 +134,21 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public String getAvailableRoom_ID() {
-
         return ConfigHelper.getInstance().getRoomDAO().getAvailableRoom().getFirst();
+    }
+
+    @Override
+    public boolean addUserToConference(List<String> user_names, String meeting_ID) {
+        List<String> user_IDs = ConfigHelper.getInstance().getUserDAO().getIDByName(user_names);
+        // 添加关联用户和会议
+        return ConfigHelper.getInstance().getUserConferenceDAO().connectUserAndConference(user_IDs, meeting_ID);
+    }
+
+    @Override
+    public boolean removeConferenceByIDs(List<String> user_names, String meeting_ID) {
+        List<String> user_IDs = ConfigHelper.getInstance().getUserDAO().getIDByName(user_names);
+        // 移除关联
+        return ConfigHelper.getInstance().getUserConferenceDAO().removeRecord(meeting_ID, user_IDs);
     }
 
 

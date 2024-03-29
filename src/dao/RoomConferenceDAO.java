@@ -13,4 +13,7 @@ public interface RoomConferenceDAO {
     boolean addMeetingToRoom(String meeting_ID, String room_ID, LocalDateTime meetingTime);
     // 通过会议ID查会议室
     List<String> getRoom_IDByMeeting_ID(List<String> meeting_IDs);
+    String getRoom_IDByMeeting_ID(String meeting_ID);
+    // 移除会议在某间会议室开始的记录
+    boolean removeMeetingFromRoom(String meeting_ID, String room_ID);
 }

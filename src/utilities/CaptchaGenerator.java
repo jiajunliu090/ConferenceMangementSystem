@@ -90,7 +90,7 @@ public class CaptchaGenerator {
     }
     private static void saveImageToFile(BufferedImage image, String filename) {
         try {
-            String filePath = new StringBuffer().append("/Users/liujiajun/IdeaProjects/ConferenceMangementSystem/src/resources/captchaImage").append(File.separator).append(filename).toString();
+            String filePath = new StringBuffer().append("src/resources/captchaImage").append(File.separator).append(filename).toString();
             File output = new File(filePath);
             ImageIO.write(image, "png", output);
             System.out.println("验证码图片已保存到：" + output.getAbsolutePath());
