@@ -145,43 +145,6 @@ public class ConferenceDAOImpl implements ConferenceDAO {
         return false;
     }
 
-    public List<Object[]> getMeetingInfoData(String user_ID) {
-        Connection connection = null;
-        PreparedStatement preparedStatement = null;
-        ResultSet resultSet = null;
-        String sql = "SELECT rc.meeting_ID, rc.room_ID, rc.meetingTime, uc.isSignIn\n" +
-                "FROM conference_management.room_conference rc\n" +
-                "JOIN conference_management.user_conference uc ON rc.meeting_ID = uc.meeting_ID\n" +
-                "WHERE uc.user_ID = ?";
-        List<Object[]> data = new ArrayList<>();
-        try {
-            connection = JDBCUtil.getConnection();
-            preparedStatement = connection.prepareStatement(sql);
-            preparedStatement.setString(1, user_ID);
-            resultSet = preparedStatement.executeQuery();
-            while (resultSet.next()) {
-                // 从结果集中提取每列的数据
-                String meeting_ID = resultSet.getString("meeting_ID");
-                String room_ID = resultSet.getString("room_ID");
-                String meetingTime = resultSet.getString("meetingTime");
-                String isSignIn = resultSet.getString("isSignIn");
-
-                // 创建一个包含当前行数据的Object数组
-                Object[] rowData = {meeting_ID, room_ID, meetingTime, isSignIn};
-
-                // 将Object数组添加到列表中
-                data.add(rowData);
-            }
-            // 返回包含所有行数据的列表
-            return data;
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            JDBCUtil.closeConnection(resultSet, preparedStatement, connection);
-        }
-        return null;
-    }
-
     private void updateHelper(String meeting_ID, String theme, LocalDateTime meetingTime) {
         Connection connection = null;
         PreparedStatement preparedStatement = null;

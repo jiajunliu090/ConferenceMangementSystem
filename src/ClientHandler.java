@@ -1,5 +1,4 @@
 import model.Captcha;
-import service.UserService;
 import service.impl.AdminServiceImpl;
 import service.impl.UserServiceImpl;
 import utilities.*;
@@ -44,6 +43,29 @@ public class ClientHandler implements Runnable {
                     case "AdminLogin":
                         handleAdminLogin();
                         break;
+                    case "admin_getRoomInfoTable":
+                        handleGetRoomInfoTable();
+                        break;
+                    case "admin_getMeetingInfoTable":
+                        handleGetMeetingInfoTable();
+                        break;
+                    case "admin_getUserInfoTable":
+                        handleGetUserInfoTable();
+                        break;
+                    case "admin_closeRoomButton":
+                        handleCloseRoom();
+                        break;
+                    case "add Room":
+                        handleAddRoom();
+                        break;
+                    case "admin_openRoomButton":
+                        handleOpenRoom();
+                        break;
+                    case "admin_deleteRoomButton":
+                        handleDeleteRoom();
+                        break;
+                    case "admin_deleteUser":
+
                     case "UserLogin":
                         handleUserLogin();
                         break;
@@ -58,6 +80,9 @@ public class ClientHandler implements Runnable {
                         break;
                     case "getLoginUser_position":
                         handleGetUser_position(); // 获取用户职位信息
+                        break;
+                    case "getLoginUser_password":
+                        handleGetU_password(); // 获取密码
                         break;
                     case "getComingMeetingTable":
                         handleGetComingMeetingTable(); // 获取会议表格1
@@ -75,12 +100,8 @@ public class ClientHandler implements Runnable {
                         handleSignInMeeting();
                         // 刷新表格
                         break;
-                    case "resetTable":
-                        handleResetTable();
-                        break;
                     case "removeFromMeeting":
                         handleRemoveFromMeeting();
-                        // 刷新表格
                         break;
                     case "getAvailableRoom":
                         handleGetAvailableRoom();
@@ -91,19 +112,28 @@ public class ClientHandler implements Runnable {
                     case "submitComment":
                         handleSubmitComment();
                         break;
+                    case "submitInfoChange":
+                        handleSubmitChangeInfo();
+                        break;
                     case "logOutUser":
                         logOutUser(); // id, pass, ensure
+                        break;
+                    case "null":
+                        System.out.println(" 'null' ");
+                    case null:
+                        System.out.println(">>>>>>null");
                         break;
                     default:
                         System.out.println("未知请求 <<< 服务端等待请求 <<<<<");
                         break;
                 }
             }
-        } catch (IOException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         } finally {
             try {
                 socket.close();
+                System.out.println(">>>==== socket close ====<<<");
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -123,6 +153,68 @@ public class ClientHandler implements Runnable {
         } else {
             out.println("LoginFailed"); // 登录失败
         }
+    }
+    private void handleGetMeetingInfoTable() throws IOException {
+        TableModel model = TableGenerator.generateMeetingInfoTable();
+        ObjectOutputStream out = new ObjectOutputStream(socket.getOutputStream());
+        out.writeObject(model);
+        out.flush();
+    }
+
+    private void handleGetRoomInfoTable() throws IOException {
+        TableModel model = TableGenerator.generateRoomInfoTable();
+        ObjectOutputStream out = new ObjectOutputStream(socket.getOutputStream());
+        out.writeObject(model);
+        out.flush();
+    }
+
+    private void handleGetUserInfoTable() throws IOException {
+        TableModel model = TableGenerator.generateUserInfoTable();
+        ObjectOutputStream out = new ObjectOutputStream(socket.getOutputStream());
+        out.writeObject(model);
+        out.flush();
+    }
+
+
+    private void handleCloseRoom() throws IOException {
+        String room_id = in.readLine();
+        if (ConfigHelper.getInstance().getRoomDAO().closeRoom(room_id)) {
+            out.println("Room closed");
+            out.flush();
+        }
+    }
+
+    private void handleAddRoom() throws IOException {
+        String room_id = in.readLine();
+        if (ConfigHelper.getInstance().getRoomDAO().addRoom(room_id)) {
+            out.println("add room success");
+        }else out.println("add room failed");
+        out.flush();
+    }
+
+    private void handleOpenRoom() throws IOException {
+        String room_id = in.readLine();
+        if (ConfigHelper.getInstance().getRoomDAO().openRoom(room_id)) {
+            out.println("open room success");
+
+        }else out.println("open room failed");
+        out.flush();
+    }
+
+    private void handleDeleteRoom() throws IOException {
+        String room_id = in.readLine();
+        if (ConfigHelper.getInstance().getRoomDAO().deleteRoom(room_id)) {
+            out.println("delete room success");
+        }else out.println("delete room failed");
+        out.flush();
+    }
+
+    private void handleDeleteUser() throws IOException {
+        String user_id = in.readLine();
+        if (ConfigHelper.getInstance().getUserDAO().deleteUser(user_id)) {
+            out.println("delete user success");
+        }else out.println("delete user failed");
+        out.flush();
     }
 
     private void handleUserLogin() throws IOException {
@@ -145,7 +237,8 @@ public class ClientHandler implements Runnable {
         String name = in.readLine();
         if (UserServiceImpl.getInstance().registerUser(user_ID, password, name)) {
             out.println("registerSuccess");
-        }
+        }else out.println("registerFailed");
+        out.flush();
     }
 
     private void handleGetUser_name() throws IOException {
@@ -177,6 +270,15 @@ public class ClientHandler implements Runnable {
         System.out.println("发送职位：" + position);
     }
 
+
+    private void handleGetU_password() throws IOException {
+        String user_ID = in.readLine();
+        String password = UserServiceImpl.getInstance().getLoginUser().getU_password();
+        out.println("ReturnU_password");
+        out.println(password);
+        out.flush();
+    }
+
     private void handleGetComingMeetingTable() throws IOException {
         System.out.println("正在发送表格数据...");
         String user_ID = in.readLine();
@@ -203,7 +305,6 @@ public class ClientHandler implements Runnable {
         String meeting_ID = in.readLine();
         String participants = in.readLine();
         String meeting_time = in.readLine();
-        String user_ID = in.readLine();
         String first_room = ConfigHelper.getInstance().getRoomDAO().getAvailableRoom().getFirst(); // 获取空闲的会议室
         List<String> participants_name = Arrays.stream(participants.split(",")).toList();
         if (UserServiceImpl.getInstance().createConference( // 创建会议
@@ -213,22 +314,6 @@ public class ClientHandler implements Runnable {
             out.println("CreateConferenceSuccess");
             out.println(first_room);
             out.flush();
-            handleResetTable(user_ID);
-        }
-    }
-    private void handleResetTable() throws IOException {
-        String user_ID = in.readLine();
-        handleResetTable(user_ID);
-    }
-
-    private void handleResetTable(String user_ID) throws IOException {
-        TableModel tableModel = TableGenerator.generateComingMeetingTable(user_ID);
-        TableModel tableModel2 = TableGenerator.generateMeetingInfoTable(user_ID);
-        System.out.println("刷新表格...");
-        try (ObjectOutputStream outputStream = new ObjectOutputStream(socket.getOutputStream())) {
-            outputStream.writeObject(tableModel);  // 表格1
-            outputStream.writeObject(tableModel2); // 表格2
-            outputStream.flush();
         }
     }
 
@@ -261,14 +346,15 @@ public class ClientHandler implements Runnable {
     }
     private void handleRemoveFromMeeting() throws IOException {
         String meeting_ID = in.readLine();
-        String user_ID = in.readLine();
-        boolean b = UserServiceImpl.getInstance().removeConference(meeting_ID);
-        if (b) {
+        if (UserServiceImpl.getInstance().removeConference(meeting_ID)) {
             out.println("removeSuccess");
-            handleResetTable(user_ID);
-        }else out.println("removeFail");
-        out.flush();
+            out.flush(); // 确保响应被立即发送
+        } else {
+            out.println("removeFail");
+            out.flush(); // 确保响应被立即发送
+        }
     }
+
     private void handleGetAvailableRoom() throws IOException {
         String meeting_ID = in.readLine();
         List<String> availableRoom = ConfigHelper.getInstance().getRoomDAO().getAvailableRoom();
@@ -335,4 +421,15 @@ public class ClientHandler implements Runnable {
         }
     }
 
+    private void handleSubmitChangeInfo() throws IOException {
+        String name = in.readLine(); // 1
+        String meetingName = in.readLine();
+        String position = in.readLine();
+        String password = in.readLine();
+        String gender = in.readLine();
+        //String name, String meetingName, String position, String password, String gender
+        if (UserServiceImpl.getInstance().updateUser(name, meetingName, position, password, gender)) {
+            out.println("submitChangeSuccess");
+        } else out.println("submitChangeFail");
+    }
 }

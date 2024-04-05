@@ -116,6 +116,7 @@ public class UserDAOImpl implements UserDAO {
             preparedStatement.setString(6, user_id);
             int affectRow = preparedStatement.executeUpdate();
             System.out.println("更新用户信息：受影响的行数：" + affectRow);
+            return affectRow == 1;
         }catch (Exception e) {
             e.printStackTrace();
         }finally {

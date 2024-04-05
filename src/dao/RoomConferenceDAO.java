@@ -16,4 +16,6 @@ public interface RoomConferenceDAO {
     String getRoom_IDByMeeting_ID(String meeting_ID);
     // 移除会议在某间会议室开始的记录
     boolean removeMeetingFromRoom(String meeting_ID, String room_ID);
+
+
 }
