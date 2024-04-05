@@ -7,7 +7,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
-import java.util.List;
 
 public class TableGenerator {
 
@@ -51,6 +50,7 @@ public class TableGenerator {
         }
         return res;
     }
+
     public static TableModel generateRoomInfoTable(){
         DefaultTableModel res = new DefaultTableModel();
         Connection connection = null;
@@ -116,7 +116,6 @@ public class TableGenerator {
         }
         return res;
     }
-
 
     public static TableModel generateComingMeetingTable(String loginUser_ID) {
         // 查会议室，会议ID，会议时间

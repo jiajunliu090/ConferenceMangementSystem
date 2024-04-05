@@ -65,7 +65,8 @@ public class ClientHandler implements Runnable {
                         handleDeleteRoom();
                         break;
                     case "admin_deleteUser":
-
+                        handleDeleteUser();
+                        break;
                     case "UserLogin":
                         handleUserLogin();
                         break;
@@ -117,6 +118,12 @@ public class ClientHandler implements Runnable {
                         break;
                     case "logOutUser":
                         logOutUser(); // id, pass, ensure
+                        break;
+                    case "user_tableFlush":
+                        handleUserResetTable();
+                        break;
+                    case "admin_flushTable":
+                        handleAdminResetTable();
                         break;
                     case "null":
                         System.out.println(" 'null' ");
@@ -416,9 +423,9 @@ public class ClientHandler implements Runnable {
         String user_id = in.readLine();
         String ensure = in.readLine();
         if (UserServiceImpl.getInstance().deleteUser(user_id, ensure)) {
-            out.println("logOutSuccess");
-            out.flush();
-        }
+            out.println("logoutSuccess");
+        }else out.println("logoutFail");
+        out.flush();
     }
 
     private void handleSubmitChangeInfo() throws IOException {
@@ -432,4 +439,26 @@ public class ClientHandler implements Runnable {
             out.println("submitChangeSuccess");
         } else out.println("submitChangeFail");
     }
+
+    private void handleUserResetTable() throws IOException {
+        String user_ID = in.readLine();
+        ObjectOutputStream outputStream = new ObjectOutputStream(socket.getOutputStream());
+        DefaultTableModel defaultTableModel = (DefaultTableModel) TableGenerator.generateComingMeetingTable(user_ID);
+        DefaultTableModel defaultTableModel1 = (DefaultTableModel) TableGenerator.generateMeetingInfoTable(user_ID);
+        outputStream.writeObject(defaultTableModel);
+        outputStream.writeObject(defaultTableModel1);
+        outputStream.flush();
+    }
+
+    private void handleAdminResetTable() throws IOException {
+        ObjectOutputStream objectOutputStream = new ObjectOutputStream(socket.getOutputStream());
+        DefaultTableModel defaultTableModel = (DefaultTableModel) TableGenerator.generateRoomInfoTable();
+        DefaultTableModel defaultTableModel1 = (DefaultTableModel) TableGenerator.generateMeetingInfoTable();
+        DefaultTableModel defaultTableModel2 = (DefaultTableModel) TableGenerator.generateUserInfoTable();
+        objectOutputStream.writeObject(defaultTableModel);
+        objectOutputStream.writeObject(defaultTableModel1);
+        objectOutputStream.writeObject(defaultTableModel2);
+        objectOutputStream.flush();
+    }
+
 }
