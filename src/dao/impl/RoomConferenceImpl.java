@@ -150,10 +150,4 @@ public class RoomConferenceImpl implements RoomConferenceDAO {
     }
 
 
-    public static void main(String[] args) {
-        RoomConferenceDAO roomConferenceDAO = new RoomConferenceImpl();
-        roomConferenceDAO.addMeetingToRoom("muggleee", "1111101H", DateTimeUtils.fromDbDateTime("2024-03-21 15:20:00"));
-    }
-
-
 }

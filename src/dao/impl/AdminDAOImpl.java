@@ -73,10 +73,4 @@ public class AdminDAOImpl implements AdminDAO {
         return list;
     }
 
-    public static void main(String[] args) {
-        AdminDAO adminDAO = new AdminDAOImpl();
-        //System.out.println(adminDAO.getAdmin_ID());
-        System.out.println(adminDAO.getAllUsers());
-        adminDAO.login("12345678", "123456");
-    }
 }
